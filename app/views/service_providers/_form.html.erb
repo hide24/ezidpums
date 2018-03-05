@@ -8,17 +8,7 @@
     </div>
 <%= form_with(model: service_provider, remote: true) do |form| %>
     <div class="modal-body">
-    <% if service_provider.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(service_provider.errors.count, "error") %> prohibited this service_provider from being saved:</h2>
-
-        <ul>
-        <% service_provider.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <%= render "modal_error", service_provider: service_provider %>
 
     <div class="form-group field">
       <strong><%= form.label :name, class: 'control-label col-lg-2' %></strong>

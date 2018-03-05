@@ -1,6 +1,6 @@
 <% if @status == 'success' %>
 $("tbody").append("<%= j(render("tr", service_provider: @service_provider)) %>");
-<%  elsif @status == 'fail' %>
-alert('error!');
-<% end %>
 $("#service_provider-modal").modal("hide");
+<%  elsif @status == 'fail' %>
+$("#modal_error").replaceWith("<%= j(render("modal_error", service_provider: @service_provider)) %>");
+<% end %>

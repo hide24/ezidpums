@@ -1,0 +1,13 @@
+  <div id="modal_error">
+    <% if service_provider.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(service_provider.errors.count, "error") %> prohibited this service_provider from being saved:</h2>
+
+        <ul>
+        <% service_provider.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
