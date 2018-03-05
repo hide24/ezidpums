@@ -17,7 +17,7 @@ class LdapAttributesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create ldap_attribute" do
     assert_difference('LdapAttribute.count') do
-      post ldap_attributes_url, params: { ldap_attribute: { attribute_filter: @ldap_attribute.attribute_filter, enable: @ldap_attribute.enable, field_type: @ldap_attribute.field_type, name: @ldap_attribute.name, order: @ldap_attribute.order } }
+      post ldap_attributes_url, params: { ldap_attribute: { attribute_filter: '@ldap_attribute.attribute_filter', enable: '@ldap_attribute.enable', field_type: '@ldap_attribute.field_type', name: '@ldap_attribute.name', order: '@ldap_attribute.order'.to_i } }
     end
 
     assert_redirected_to ldap_attribute_url(LdapAttribute.last)

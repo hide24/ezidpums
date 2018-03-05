@@ -1,11 +1,11 @@
   <div id="modal_error">
-    <% if service_provider.errors.any? %>
+    <% if ldap_attribute.errors.any? %>
       <div id="error_explanation" class="alert alert-danger" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong><%= pluralize(service_provider.errors.count, "error") %> prohibited this service_provider from being saved:</strong>
+        <strong><%= pluralize(ldap_attribute.errors.count, "error") %> prohibited this ldap_attribute from being saved:</strong>
 
         <ul>
-        <% service_provider.errors.full_messages.each do |message| %>
+        <% ldap_attribute.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
         </ul>

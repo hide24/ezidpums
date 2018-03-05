@@ -2,14 +2,21 @@
 
 one:
   order: 1
-  name: MyString
-  attribute_filter: MyText
-  field_type: MyString
-  enable: false
+  name: displayName
+  attribute_filter: "<foo>bar</foo>"
+  field_type: text
+  enable: true
 
 two:
-  order: 1
-  name: MyString
-  attribute_filter: MyText
-  field_type: MyString
+  order: 2
+  name: mail
+  attribute_filter: "<foo>bar</foo>"
+  field_type: text
+  enable: true
+
+three:
+  order: 3
+  name: userPassword
+  attribute_filter: null
+  field_type: password
   enable: false

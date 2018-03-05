@@ -30,9 +30,11 @@ class LdapAttributesController < ApplicationController
       if @ldap_attribute.save
         format.html { redirect_to @ldap_attribute, notice: 'Ldap attribute was successfully created.' }
         format.json { render :show, status: :created, location: @ldap_attribute }
+        format.js { @status = 'success'}
       else
         format.html { render :new }
         format.json { render json: @ldap_attribute.errors, status: :unprocessable_entity }
+        format.js { @status = 'fail' }
       end
     end
   end
@@ -44,9 +46,11 @@ class LdapAttributesController < ApplicationController
       if @ldap_attribute.update(ldap_attribute_params)
         format.html { redirect_to @ldap_attribute, notice: 'Ldap attribute was successfully updated.' }
         format.json { render :show, status: :ok, location: @ldap_attribute }
+        format.js { @status = 'success'}
       else
         format.html { render :edit }
         format.json { render json: @ldap_attribute.errors, status: :unprocessable_entity }
+        format.js { @status = 'fail' }
       end
     end
   end

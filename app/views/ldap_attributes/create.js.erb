@@ -1,0 +1,6 @@
+<% if @status == 'success' %>
+$("tbody").append("<%= j(render("tr", ldap_attribute: @ldap_attribute)) %>");
+$("#ldap_attribute-modal").modal("hide");
+<%  elsif @status == 'fail' %>
+$("#modal_error").replaceWith("<%= j(render("modal_error", ldap_attribute: @ldap_attribute)) %>");
+<% end %>

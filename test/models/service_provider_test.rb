@@ -14,4 +14,19 @@ class ServiceProviderTest < ActiveSupport::TestCase
     @service_provider.certification = 'so_long_string_so_long_string_so_long_string_so_long_string_so_long_string_so_long_string_'
     assert @service_provider.puritty_certification.size <= ServiceProvider::CERTIFICATION_LIST_VIEW_LENGTH
   end
+
+  test "name should not be empty" do
+    @service_provider.name = ''
+    assert_not  @service_provider.save
+  end
+
+  test "name should be uniq" do
+    @service_provider.name = 'MySp2'
+    assert_not @service_provider.save
+  end
+
+  test "entity_id should be uniq" do
+    @service_provider.entity_id = 'https://mysp2/shibboleth-sp/'
+    assert_not @service_provider.save
+  end
 end

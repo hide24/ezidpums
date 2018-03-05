@@ -5,7 +5,7 @@ class CreateLdapAttributes < ActiveRecord::Migration[5.1]
       t.string :name
       t.text :attribute_filter
       t.string :field_type
-      t.boolean :enable
+      t.boolean :enable, defaul: true
 
       t.timestamps
     end

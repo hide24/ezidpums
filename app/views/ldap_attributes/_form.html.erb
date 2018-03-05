@@ -1,42 +1,43 @@
-<%= form_with(model: ldap_attribute, local: true) do |form| %>
-  <% if ldap_attribute.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(ldap_attribute.errors.count, "error") %> prohibited this ldap_attribute from being saved:</h2>
-
-      <ul>
-      <% ldap_attribute.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">LDAP attribute</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-  <% end %>
+<%= form_with(model: ldap_attribute, remote: true) do |form| %>
+    <div class="modal-body">
+    <%= render "modal_error", ldap_attribute: ldap_attribute %>
 
-  <div class="field">
-    <%= form.label :order %>
-    <%= form.number_field :order, id: :ldap_attribute_order %>
+    <div class="form-group field">
+      <strong><%= form.label :order %></strong>
+      <%= form.number_field :order, id: :ldap_attribute_order, class: "form-control"  %>
+    </div>
+
+    <div class="form-group field">
+      <strong><%= form.label :name %></strong>
+      <%= form.text_field :name, id: :ldap_attribute_name, class: "form-control"  %>
+    </div>
+
+    <div class="form-group field">
+      <strong><%= form.label :attribute_filter %></strong>
+      <%= form.text_area :attribute_filter, id: :ldap_attribute_attribute_filter, rows:10, class: "form-control"  %>
+    </div>
+
+    <div class="form-group field">
+      <strong><%= form.label :field_type %></strong>
+      <%= form.text_field :field_type, id: :ldap_attribute_field_type, class: "form-control"  %>
+    </div>
+
+    <div class="checkbox field">
+      <strong><%= form.label :enable %></strong>
+      <%= form.check_box :enable, id: :ldap_attribute_enable %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :ldap_attribute_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :attribute_filter %>
-    <%= form.text_area :attribute_filter, id: :ldap_attribute_attribute_filter %>
-  </div>
-
-  <div class="field">
-    <%= form.label :field_type %>
-    <%= form.text_field :field_type, id: :ldap_attribute_field_type %>
-  </div>
-
-  <div class="field">
-    <%= form.label :enable %>
-    <%= form.check_box :enable, id: :ldap_attribute_enable %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="modal-footer actions">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+    <%= form.submit class: "btn btn-primary"%>
   </div>
 <% end %>
