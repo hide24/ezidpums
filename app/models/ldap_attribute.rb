@@ -1,0 +1,2 @@
+class LdapAttribute < ApplicationRecord
+end

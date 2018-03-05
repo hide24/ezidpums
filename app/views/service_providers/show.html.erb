@@ -1,0 +1,35 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Service Provider</h5>
+    </div>
+  <div class="modal-body">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @service_provider.name %>
+</p>
+
+<p>
+  <strong>Entity:</strong>
+  <%= @service_provider.entity_id %>
+</p>
+
+<p>
+  <strong>Certification:</strong>
+  <%= @service_provider.certification %>
+</p>
+
+<p>
+  <strong>Enable:</strong>
+  <%= @service_provider.enable %>
+</p>
+
+  </div>
+
+  <div class="modal-footer actions">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+  </div>
+  </div>
+</div>

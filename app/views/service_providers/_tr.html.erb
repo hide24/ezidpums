@@ -1,0 +1,11 @@
+      <tr id="attr-sp-<%= service_provider.id %>">
+        <td><%= service_provider.name %></td>
+        <td><%= service_provider.entity_id %></td>
+        <td><%= service_provider.puritty_certification %></td>
+        <td><%= service_provider.enable %></td>
+        <td>
+          <%= link_to 'Show', service_provider, remote: true, class: "btn btn-sm btn-secondary" %>
+          <%= link_to 'Edit', edit_service_provider_path(service_provider), remote: true, class: "btn btn-sm btn-secondary" %>
+          <%= link_to 'Destroy', service_provider, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+        </td>
+      </tr>

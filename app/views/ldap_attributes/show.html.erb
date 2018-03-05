@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @ldap_attribute.order %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ldap_attribute.name %>
+</p>
+
+<p>
+  <strong>Attribute filter:</strong>
+  <%= @ldap_attribute.attribute_filter %>
+</p>
+
+<p>
+  <strong>Field type:</strong>
+  <%= @ldap_attribute.field_type %>
+</p>
+
+<p>
+  <strong>Enable:</strong>
+  <%= @ldap_attribute.enable %>
+</p>
+
+<%= link_to 'Edit', edit_ldap_attribute_path(@ldap_attribute) %> |
+<%= link_to 'Back', ldap_attributes_path %>

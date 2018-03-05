@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ldap Attributes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order</th>
+      <th>Name</th>
+      <th>Attribute filter</th>
+      <th>Field type</th>
+      <th>Enable</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ldap_attributes.each do |ldap_attribute| %>
+      <tr>
+        <td><%= ldap_attribute.order %></td>
+        <td><%= ldap_attribute.name %></td>
+        <td><%= ldap_attribute.attribute_filter %></td>
+        <td><%= ldap_attribute.field_type %></td>
+        <td><%= ldap_attribute.enable %></td>
+        <td><%= link_to 'Show', ldap_attribute %></td>
+        <td><%= link_to 'Edit', edit_ldap_attribute_path(ldap_attribute) %></td>
+        <td><%= link_to 'Destroy', ldap_attribute, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ldap Attribute', new_ldap_attribute_path %>

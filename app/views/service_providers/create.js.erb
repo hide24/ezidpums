@@ -1,0 +1,6 @@
+<% if @status == 'success' %>
+$("tbody").append("<%= j(render("tr", service_provider: @service_provider)) %>");
+<%  elsif @status == 'fail' %>
+alert('error!');
+<% end %>
+$("#service_provider-modal").modal("hide");

@@ -1,0 +1,50 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Service Provider</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+<%= form_with(model: service_provider, remote: true) do |form| %>
+    <div class="modal-body">
+    <% if service_provider.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(service_provider.errors.count, "error") %> prohibited this service_provider from being saved:</h2>
+
+        <ul>
+        <% service_provider.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group field">
+      <strong><%= form.label :name, class: 'control-label col-lg-2' %></strong>
+      <%= form.text_field :name, id: :service_provider_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group field">
+      <strong><%= form.label :entity_id, 'EntityID', class: 'control-label col-lg-2' %></strong>
+      <%= form.text_field :entity_id, id: :service_provider_entity_id, class: "form-control" %>
+    </div>
+
+    <div class="form-group field">
+      <strong><%= form.label :certification, class: 'control-label col-lg-2' %></strong>
+      <%= form.text_area :certification, id: :service_provider_certification, rows: 10, class: "form-control" %>
+    </div>
+
+    <div class="checkbox field">
+      <strong><%= form.label :enable, class: 'control-label col-lg-2' %></strong>
+      <%= form.check_box :enable, id: :service_provider_enable %>
+    </div>
+  </div>
+
+  <div class="modal-footer actions">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+    <%= form.submit class: "btn btn-primary"%>
+  </div>
+<% end %>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<%= form_with(model: ldap_attribute, local: true) do |form| %>
+  <% if ldap_attribute.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ldap_attribute.errors.count, "error") %> prohibited this ldap_attribute from being saved:</h2>
+
+      <ul>
+      <% ldap_attribute.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :order %>
+    <%= form.number_field :order, id: :ldap_attribute_order %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :ldap_attribute_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :attribute_filter %>
+    <%= form.text_area :attribute_filter, id: :ldap_attribute_attribute_filter %>
+  </div>
+
+  <div class="field">
+    <%= form.label :field_type %>
+    <%= form.text_field :field_type, id: :ldap_attribute_field_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :enable %>
+    <%= form.check_box :enable, id: :ldap_attribute_enable %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

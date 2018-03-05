@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  entity_id: MyString
+  certification: MyText
+  enable: false
+
+two:
+  name: MyString
+  entity_id: MyString
+  certification: null
+  enable: false
+
+three:
+  name: MyString
+  entity_id: MyString
+  certification: so_long_text_so_long_text_so_long_text_so_long_text_so_long_text_so_long_text
+  enable: false

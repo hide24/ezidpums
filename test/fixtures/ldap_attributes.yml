@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order: 1
+  name: MyString
+  attribute_filter: MyText
+  field_type: MyString
+  enable: false
+
+two:
+  order: 1
+  name: MyString
+  attribute_filter: MyText
+  field_type: MyString
+  enable: false
