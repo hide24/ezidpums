@@ -1,0 +1,19 @@
+development:
+  host: ldap
+  base: <%= ENV['LDAP_BASE_DN'] %>
+  bind_dn: <%= ENV['LDAP_BIND_DN'] %>
+  password: <%= ENV['LDAP_BIND_PASSWORD'] %>
+
+test:
+  host: test-ldap
+  base: <%= ENV['LDAP_BASE_DN'] %>
+  bind_dn: <%= ENV['LDAP_BIND_DN'] %>
+  password: <%= ENV['LDAP_BIND_PASSWORD'] %>
+
+production:
+  host: 127.0.0.1
+  method: :tls
+  base: dc=production,dc=local,dc=net
+  bind_dn: cn=admin,dc=local,dc=net
+  password: secret
+
