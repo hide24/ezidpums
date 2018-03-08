@@ -35,8 +35,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Use ActiveLdap
-gem 'net-ldap', :require => 'net/ldap'
-gem 'activeldap', :require => 'active_ldap/railtie'
+gem 'net-ldap', require:  'net/ldap'
+gem 'activeldap', require: 'active_ldap/railtie', git: 'https://github.com/hide24/activeldap'
 
 # Use jQuery & Bootstarp4
 gem 'bootstrap', '~> 4.0.0'

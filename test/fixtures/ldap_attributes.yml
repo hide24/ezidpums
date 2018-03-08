@@ -23,3 +23,11 @@ three:
   attribute_filter: null
   field_type: password
   enable: false
+
+four:
+  id: 4
+  order: 4
+  name: uid
+  attribute_filter: null
+  field_type: text
+  enable: true

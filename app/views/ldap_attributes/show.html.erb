@@ -1,3 +1,9 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Service Provider</h5>
+    </div>
+  <div class="modal-body">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -25,5 +31,11 @@
   <%= @ldap_attribute.enable %>
 </p>
 
+  </div>
+
+  <div class="modal-footer actions">
 <%= link_to 'Edit', edit_ldap_attribute_path(@ldap_attribute) %> |
 <%= link_to 'Back', ldap_attributes_path %>
+  </div>
+  </div>
+</div>

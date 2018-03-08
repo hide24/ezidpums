@@ -1,0 +1,6 @@
+<% if @status == 'success' %>
+$("tbody").append("<%= j(render("tr", account: @account)) %>");
+$("#account-modal").modal("hide");
+<%  elsif @status == 'fail' %>
+$("#modal_error").replaceWith("<%= j(render("modal_error", account: @account)) %>");
+<% end %>

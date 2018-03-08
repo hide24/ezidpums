@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class OrganizationTest < ActiveSupport::TestCase
-
   setup do
     @organization = AlTestUtils.organizations(:one)
   end

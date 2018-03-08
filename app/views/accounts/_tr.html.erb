@@ -1,0 +1,10 @@
+      <tr id="attr-ac-<%= account.id %>">
+        <td><%= account.display_name %></td>
+        <td><%= account.mail %></td>
+        <td><%= account.uid %></td>
+        <td>
+          <%= link_to 'Show', account, remote: true, class: "btn btn-sm btn-secondary" %>
+          <%= link_to 'Edit', edit_account_path(account), remote: true, class: "btn btn-sm btn-secondary" %>
+          <%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+        </td>
+      </tr>

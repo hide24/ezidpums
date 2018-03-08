@@ -12,7 +12,7 @@
 </p>
 
 <p>
-  <strong>Entity:</strong>
+  <strong>EntityID:</strong>
   <%= @service_provider.entity_id %>
 </p>
 
@@ -29,7 +29,8 @@
   </div>
 
   <div class="modal-footer actions">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+    <%= link_to 'Edit', edit_service_provider_path(@service_provider) %> |
+    <%= link_to 'Back', service_providers_path %>
   </div>
   </div>
 </div>

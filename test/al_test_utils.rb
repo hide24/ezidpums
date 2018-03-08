@@ -34,7 +34,7 @@ module AlTestUtils
   end
 
   def populate(klass = ActiveLdap::Base)
-    ActiveLdap::Populate.ensure_base(klass)
+    ActiveLdap::Populate.ensure_base(klass, ou_base_class: ActiveLdap::Base)
   end
 
   def load(names = nil)
