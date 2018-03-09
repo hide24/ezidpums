@@ -1,41 +1,34 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title">IdP Attribute</h5>
+      <h5 class="modal-title">LDAP Attribute</h5>
     </div>
   <div class="modal-body">
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Order:</strong>
-  <%= @idp_attribute.order %>
+  <%= @ldap_attribute.order %>
 </p>
 
 <p>
   <strong>Name:</strong>
-  <%= @idp_attribute.name %>
-</p>
-
-<p>
-  <strong>Attribute filter:</strong>
-  <%= @idp_attribute.attribute_filter %>
+  <%= @ldap_attribute.name %>
 </p>
 
 <p>
   <strong>Field type:</strong>
-  <%= @idp_attribute.field_type %>
+  <%= @ldap_attribute.field_type %>
 </p>
 
 <p>
   <strong>Enable:</strong>
-  <%= @idp_attribute.enable %>
+  <%= @ldap_attribute.enable %>
 </p>
 
-  </div>
-
   <div class="modal-footer actions">
-<%= link_to 'Edit', edit_idp_attribute_path(@idp_attribute) %> |
-<%= link_to 'Back', idp_attributes_path %>
+<%= link_to 'Edit', edit_ldap_attribute_path(@ldap_attribute) %> |
+<%= link_to 'Back', ldap_attributes_path %>
   </div>
   </div>
 </div>

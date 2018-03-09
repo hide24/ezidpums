@@ -1,7 +1,7 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title">IdP Attribute</h5>
+      <h5 class="modal-title">LDAP Attribute</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -12,34 +12,27 @@
 <div class="form-group field">
   <strong><label class="control-label col-lg-2">Order</label></strong>
   <div class="form-control">
-    <%= @idp_attribute.order %>
+    <%= @ldap_attribute.order %>
   </div>
 </div>
 
 <div class="form-group field">
   <strong><label class="control-label col-lg-2">Name</label></strong>
   <div class="form-control">
-    <%= @idp_attribute.name %>
-  </div>
-</div>
-
-<div class="form-group field">
-  <strong><label class="control-label col-lg-2">Attribute Filter</label></strong>
-  <div class="form-control">
-    <%= @idp_attribute.attribute_filter %>
+    <%= @ldap_attribute.name %>
   </div>
 </div>
 
 <div class="form-group field">
   <strong><label class="control-label col-lg-2">Field type</label></strong>
   <div class="form-control">
-    <%= @idp_attribute.field_type %>
+    <%= @ldap_attribute.field_type %>
   </div>
 </div>
 
 <div class="form-group field">
   <strong><label class="control-label col-lg-2">Enable</label></strong>
-  <%= @idp_attribute.enable %>
+  <%= @ldap_attribute.enable %>
 </div>
 
   </div>

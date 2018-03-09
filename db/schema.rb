@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180306025454) do
+ActiveRecord::Schema.define(version: 20180309015544) do
 
   create_table "idp_attribute_assigns", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "service_provider_id"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20180306025454) do
     t.integer "order"
     t.string "name"
     t.text "attribute_filter"
+    t.string "field_type"
+    t.boolean "enable"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ldap_attributes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "order"
+    t.string "name"
     t.string "field_type"
     t.boolean "enable"
     t.datetime "created_at", null: false
