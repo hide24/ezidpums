@@ -1,0 +1,41 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Service Provider</h5>
+    </div>
+  <div class="modal-body">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @idp_attribute.order %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @idp_attribute.name %>
+</p>
+
+<p>
+  <strong>Attribute filter:</strong>
+  <%= @idp_attribute.attribute_filter %>
+</p>
+
+<p>
+  <strong>Field type:</strong>
+  <%= @idp_attribute.field_type %>
+</p>
+
+<p>
+  <strong>Enable:</strong>
+  <%= @idp_attribute.enable %>
+</p>
+
+  </div>
+
+  <div class="modal-footer actions">
+<%= link_to 'Edit', edit_idp_attribute_path(@idp_attribute) %> |
+<%= link_to 'Back', idp_attributes_path %>
+  </div>
+  </div>
+</div>

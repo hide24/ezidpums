@@ -1,6 +1,0 @@
-<% if @status == 'success' %>
-$("#attr-la-<%= @ldap_attribute.id %>").replaceWith("<%= j(render("tr", ldap_attribute: @ldap_attribute)) %>");
-$("#ldap_attribute-modal").modal("hide");
-<%  elsif @status == 'fail' %>
-$("#modal_error").replaceWith("<%= j(render("modal_error", ldap_attribute: @ldap_attribute)) %>");
-<% end %>

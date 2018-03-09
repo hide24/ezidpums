@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>IdP Attributes</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Order</th>
+      <th>Name</th>
+      <th>Field type</th>
+      <th>Enable</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @idp_attributes.each do |idp_attribute| %>
+      <%= render "tr", idp_attribute: idp_attribute %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New idp Attribute', new_idp_attribute_path, remote: true, class: "btn btn-lg btn-primary" %>
+<div id="idp_attribute-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

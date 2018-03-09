@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Idp Attribute Assigns</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Service provider</th>
+      <th>Idp attribute</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @service_providers.each do |service_provider| %>
+      <%= render "tr", service_provider: service_provider %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div id="service_provider-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

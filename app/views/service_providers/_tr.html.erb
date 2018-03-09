@@ -6,7 +6,7 @@
         <td>
           <%= link_to 'Show', service_provider, remote: true, class: "btn btn-sm btn-secondary" %>
           <%= link_to 'Edit', edit_service_provider_path(service_provider), remote: true, class: "btn btn-sm btn-secondary" %>
-          <%= link_to 'Attribute', edit_ldap_attribute_assign_path(service_provider), remote: true, class: "btn btn-sm btn-secondary" %>
+          <%= link_to 'Attribute', edit_idp_attribute_assign_path(service_provider), remote: true, class: "btn btn-sm btn-secondary" %>
           <%= link_to 'Destroy', service_provider, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
         </td>
       </tr>

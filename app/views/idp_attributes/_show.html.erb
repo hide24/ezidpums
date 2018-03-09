@@ -1,0 +1,51 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">idp Attribute</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <div class="modal-body">
+<p id="notice"><%= notice %></p>
+
+<div class="form-group field">
+  <strong><label class="control-label col-lg-2">Order</label></strong>
+  <div class="form-control">
+    <%= @idp_attribute.order %>
+  </div>
+</div>
+
+<div class="form-group field">
+  <strong><label class="control-label col-lg-2">Name</label></strong>
+  <div class="form-control">
+    <%= @idp_attribute.name %>
+  </div>
+</div>
+
+<div class="form-group field">
+  <strong><label class="control-label col-lg-2">Attribute Filter</label></strong>
+  <div class="form-control">
+    <%= @idp_attribute.attribute_filter %>
+  </div>
+</div>
+
+<div class="form-group field">
+  <strong><label class="control-label col-lg-2">Field type</label></strong>
+  <div class="form-control">
+    <%= @idp_attribute.field_type %>
+  </div>
+</div>
+
+<div class="form-group field">
+  <strong><label class="control-label col-lg-2">Enable</label></strong>
+  <%= @idp_attribute.enable %>
+</div>
+
+  </div>
+
+  <div class="modal-footer actions">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+  </div>
+  </div>
+</div>

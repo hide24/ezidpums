@@ -1,0 +1,29 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Attributes for <%= @service_provider.name %></h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+<%= form_tag({controller: :idp_attribute_assigns, action: :update, id: @service_provider}, {method: "put", remote: true}) do %>
+    <div class="modal-body">
+    <%= render "modal_error", service_provider: @service_provider %>
+  <% attribute_ids = @service_provider.idp_attribute_ids -%>
+  <% @idp_attributes.each do |idp_attribute| -%>
+    <div class="checkbox field">
+      <label>
+      <%= check_box_tag 'idp_attribute_id[]', idp_attribute.id, (attribute_ids.include?(idp_attribute.id))? true: false %>
+      <strong><%= idp_attribute.name %></strong>
+      </label>
+    </div>
+  <% end -%>
+    </div>
+
+  <div class="modal-footer actions">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+    <%= submit_tag 'Update', class: "btn btn-primary"%>
+  </div>
+<% end %>
+  </div>
+</div>

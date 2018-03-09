@@ -1,0 +1,10 @@
+      <tr id="attr-la-<%= idp_attribute.id %>">
+        <td><%= idp_attribute.order %></td>
+        <td><%= idp_attribute.name %></td>
+        <td><%= idp_attribute.field_type %></td>
+        <td><%= idp_attribute.enable %></td>
+        <td>
+          <%= link_to 'Show', idp_attribute, remote: true, class: "btn btn-sm btn-secondary"  %>
+          <%= link_to 'Edit', edit_idp_attribute_path(idp_attribute), remote: true, class: "btn btn-sm btn-secondary" %>
+        </td>
+      </tr>

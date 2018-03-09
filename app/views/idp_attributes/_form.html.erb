@@ -1,0 +1,43 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">IdP attribute</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+<%= form_with(model: idp_attribute, remote: true) do |form| %>
+    <div class="modal-body">
+    <%= render "modal_error", idp_attribute: idp_attribute %>
+
+    <div class="form-group field">
+      <strong><%= form.label :order %></strong>
+      <%= form.number_field :order, id: :idp_attribute_order, class: "form-control"  %>
+    </div>
+
+    <div class="form-group field">
+      <strong><%= form.label :name %></strong>
+      <%= form.text_field :name, id: :idp_attribute_name, class: "form-control"  %>
+    </div>
+
+    <div class="form-group field">
+      <strong><%= form.label :attribute_filter %></strong>
+      <%= form.text_area :attribute_filter, id: :idp_attribute_attribute_filter, rows:10, class: "form-control"  %>
+    </div>
+
+    <div class="form-group field">
+      <strong><%= form.label :field_type %></strong>
+      <%= form.text_field :field_type, id: :idp_attribute_field_type, class: "form-control"  %>
+    </div>
+
+    <div class="checkbox field">
+      <strong><%= form.label :enable %></strong>
+      <%= form.check_box :enable, id: :idp_attribute_enable %>
+    </div>
+  </div>
+
+  <div class="modal-footer actions">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+    <%= form.submit class: "btn btn-primary"%>
+  </div>
+<% end %>

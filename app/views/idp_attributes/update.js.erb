@@ -1,0 +1,6 @@
+<% if @status == 'success' %>
+$("#attr-la-<%= @idp_attribute.id %>").replaceWith("<%= j(render("tr", idp_attribute: @idp_attribute)) %>");
+$("#idp_attribute-modal").modal("hide");
+<%  elsif @status == 'fail' %>
+$("#modal_error").replaceWith("<%= j(render("modal_error", idp_attribute: @idp_attribute)) %>");
+<% end %>
