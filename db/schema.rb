@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180309015544) do
+ActiveRecord::Schema.define(version: 20180309073515) do
+
+  create_table "account_exports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.binary "raw", limit: 16777215
+    t.binary "csv", limit: 16777215
+    t.binary "xls", limit: 16777215
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "account_imports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.binary "raw", limit: 16777215
+    t.string "format"
+    t.binary "internal", limit: 16777215
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "idp_attribute_assigns", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "service_provider_id"

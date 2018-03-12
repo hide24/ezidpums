@@ -10,10 +10,10 @@
     <div class="modal-body">
     <%= render "modal_error", account: account %>
 
-<% LdapAttribute.where(enable: true).order(:order).each do |ldap_attribute| -%>
+<% LdapAttribute.attribute_names.each do |ldap_attribute| -%>
     <div class="form-group field">
-      <strong><%= form.label ldap_attribute.name, class: 'control-label col-lg-2' %></strong>
-      <%= form.text_field ldap_attribute.name.underscore.to_sym, id: ldap_attribute.name.underscore, class: "form-control" %>
+      <strong><%= form.label ldap_attribute, class: 'control-label col-lg-2' %></strong>
+      <%= form.text_field ldap_attribute.underscore.to_sym, id: ldap_attribute.underscore, class: "form-control" %>
     </div>
 <% end -%>
     </div>

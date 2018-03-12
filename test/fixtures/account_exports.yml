@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  raw: |
+    version: 1
+    dn: uid=test01,ou=accounts,ou=test,dc=foo,dc=bar,dc=org
+    cn: test01
+    displayName: test01
+    mail: test01@test.org
+    objectClass: eduPerson
+    objectClass: inetOrgPerson
+    sn: test01
+    uid: test01
+    userPassword: {MD5}DmmKj/waCvYix7TbPLdQzA==
+
+    dn: uid=test02,ou=accounts,ou=test,dc=foo,dc=bar,dc=org
+    cn: test02
+    displayName: test02
+    mail: test02@test.org
+    objectClass: eduPerson
+    objectClass: inetOrgPerson
+    sn: test02
+    uid: test02
+    userPassword: {MD5}SxpuZMK/hML+KcZ4mkoGEA==
+  csv: csv
+  xls: xls
+
+two:
+  raw: |
+    version: 1
+    dn: uid=test01,ou=accounts,ou=test,dc=foo,dc=bar,dc=org
+    cn: test01
+    displayName: test01
+    mail: test01@test.org
+    objectClass: eduPerson
+    objectClass: inetOrgPerson
+    sn: test01
+    uid: test01
+    userPassword: {MD5}DmmKj/waCvYix7TbPLdQzA==
+  csv: csv
+  xls: xls

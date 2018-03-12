@@ -6,10 +6,10 @@
   <div class="modal-body">
 <p id="notice"><%= notice %></p>
 
-<% LdapAttribute.where(enable: true).order(:order).each do |ldap_attribute| -%>
+<% LdapAttribute.attribute_names.each do |ldap_attribute| -%>
 <p>
-  <strong><%= ldap_attribute.name %>:</strong>
-  <%= @account.send(ldap_attribute.name.to_sym) %>
+  <strong><%= ldap_attribute %>:</strong>
+  <%= @account.send(ldap_attribute.to_sym) %>
 </p>
 <% end -%>
 

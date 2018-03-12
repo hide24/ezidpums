@@ -7,4 +7,8 @@ class LdapAttribute < ApplicationRecord
       errors.add(:name, ': name should be take from ldap schema')
     end
   end
+
+  def self.attribute_names
+    self.where(enable: true).order(:order).pluck(:name)
+  end
 end

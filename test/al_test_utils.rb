@@ -54,10 +54,12 @@ module AlTestUtils
       fixture.each do |index, values|
         @fixtures[klass][index] = kklass.create(values)
       end
-      define_method(klass) do |index|
-        @fixtures[klass][index.to_s]
+      unless self.respond_to?(klass)
+        define_method(klass) do |index|
+          @fixtures[klass][index.to_s]
+        end
+        module_function klass.to_sym
       end
-      module_function klass.to_sym
     end
   end
 
