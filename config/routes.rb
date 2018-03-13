@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :id_providers
+  resource :id_provider
   resources :ldap_attributes
   resources :idp_attribute_assigns
   resources :idp_attributes

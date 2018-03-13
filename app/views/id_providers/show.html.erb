@@ -1,0 +1,33 @@
+<%= render 'flash' %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @id_provider.name %>
+</p>
+
+<p>
+  <strong>Entity:</strong>
+  <%= @id_provider.entity_id %>
+</p>
+
+<p>
+  <strong>Cert:</strong>
+  <%= @id_provider.cert %>
+</p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @id_provider.key %>
+</p>
+
+<p>
+  <strong>Ca cert:</strong>
+  <%= @id_provider.ca_cert %>
+</p>
+
+<p>
+  <strong>Ldap connecter:</strong>
+  <%= @id_provider.ldap_connecter %>
+</p>
+
+<%= link_to 'Edit', edit_id_provider_path(@id_provider) %> |

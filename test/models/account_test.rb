@@ -2,6 +2,7 @@ require 'test_helper'
 
 class AccountTest < ActiveSupport::TestCase
   setup do
+    AlTestUtils.load
 #    @account = AlTestUtils.accounts(:one)
     @account = Account.first
   end

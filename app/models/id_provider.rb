@@ -1,0 +1,2 @@
+class IdProvider < ApplicationRecord
+end

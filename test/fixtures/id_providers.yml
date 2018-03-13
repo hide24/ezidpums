@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  entity_id: MyString
+  cert: MyText
+  key: MyText
+  ca_cert: MyText
+  ldap_connecter: MyString
+
+two:
+  name: MyString
+  entity_id: MyString
+  cert: MyText
+  key: MyText
+  ca_cert: MyText
+  ldap_connecter: MyString
