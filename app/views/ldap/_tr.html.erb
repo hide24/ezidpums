@@ -1,0 +1,8 @@
+      <tr id="attr-ae-<%= account_export.id %>">
+        <td><%= account_export.created_at.to_formatted_s(:date_time) %></td>
+        <td>
+          <%= link_to '.csv', {action: 'download', id: account_export, format: 'csv'}, class: "btn btn-sm btn-secondary" %>
+          <%= link_to '.xls', {action: 'download', id: account_export, format: 'xls'}, class: "btn btn-sm btn-secondary" %>
+          <%= link_to('Restore', {action: 'restore', id: account_export}, {remote: true, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"}) %>
+        </td>
+      </tr>

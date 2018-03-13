@@ -1,0 +1,47 @@
+<%= render 'flash' %>
+
+<h1>LDAP administration</h1>
+
+<h2>Upload Account Data</h2>
+<div class="upload-tab">
+<%= form_tag({controller: 'ldap', action: 'upload'}, {class: 'dropzone', id: 'upload-dropzone', remote: true, authenticity_token: true, multipart: true}) do %>
+  <div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-9">
+  <div class="input-group">
+    <label class="input-group-btn">
+        <span class="btn btn-primary">
+            Choose File<input type="file" style="display:none" name="upload_file">
+        </span>
+    </label>
+    <input type="text" class="form-control input-sm" readonly="" id="filename" style="height:39px;">
+    </div>&nbsp;</div>
+    <div class="col-lg-2">
+      <%= submit_tag 'send', class: "btn btn-primary"%>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<h2>Download Account Data</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Data Saved at</th>
+      <th</th>
+    </tr>
+  </thead>
+
+<%= render 'download_list' %>
+</table>
+
+<div id="ldap-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+<script>
+$(document).on('change', ':file', function() {
+    var input = $(this),
+    numFiles = input.get(0).files ? input.get(0).files.length : 1,
+    label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    $('#filename').val(label);
+});
+</script>

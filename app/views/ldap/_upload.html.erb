@@ -1,0 +1,36 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">LDAP administration</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+<%= form_tag({action: 'update', id: account_import}, {remote: true}) do %>
+  <div class="modal-body">
+    <% if account_import.errors.any? -%>
+      <div id="error_explanation" class="alert alert-danger" role="alert">
+        <strong>Error occured.</strong>
+
+        <ul>
+        <% account_import.errors.full_messages.each do |message| -%>
+          <li><%= message %></li>
+        <% end -%>
+        </ul>
+      </div>
+    <% else -%>
+      <div id="notice" class="alert alert-success" role="notice">
+        Account data file was accepted.<br>
+        Are you sure you want to update?
+      </div>
+    <% end -%>
+  </div>
+  <div class="modal-footer actions">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Cancel</button>
+    <% if account_import.errors.empty? -%>
+    <%= submit_tag 'Update', class: "btn btn-primary" %>
+    <% end -%>
+  </div>
+<% end %>
+  </div>
+</div>

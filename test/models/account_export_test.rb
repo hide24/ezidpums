@@ -47,4 +47,10 @@ class AccountExportTest < ActiveSupport::TestCase
     @account_export = account_exports(:one)
     @account_export.load
   end
+
+  test "#filename(format) should return 'accounts.(number_styled_datetime).(format)'." do
+    @account_export.created_at = Time.new(2000,1,1,0,0,0)
+    expect_name = 'accounts.20000101090000.csv'
+    assert_equal expect_name, @account_export.filename('csv')
+  end
 end

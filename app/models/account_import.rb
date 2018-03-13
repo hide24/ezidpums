@@ -25,6 +25,8 @@ class AccountImport < ApplicationRecord
     end
     make_hash
     self.internal = Marshal.dump(@data)
+  rescue
+    errors.add(:raw, ': unknown format.')
   end
 
   def read_xls
@@ -71,11 +73,12 @@ class AccountImport < ApplicationRecord
     account_data.each.with_index do |a, i|
       account = Account.new(a)
       unless account.save
-        errors.add(:raw, ': line(%d) has error(%s). update is canceled.' % [i + 2, account.account.errors.full_messages.join(', ')])
+        errors.add(:raw, ': line(%d) has error(%s). update is canceled.' % [i + 2, account.errors.full_messages.join(', ')])
         AccountExport.order(:created_at).last.load
         return
       end
     end
+    errors.empty?
   end
 
   alias :do_check :make_internal

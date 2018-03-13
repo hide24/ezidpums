@@ -1,0 +1,20 @@
+  <tbody id="download-list">
+    <tr id="attr-ae-new">
+      <td>Current Data</td>
+      <td>
+        <%= link_to '.csv', {action: 'download', id: 'new', format: 'csv'}, class: "btn btn-sm btn-secondary" %>
+        <%= link_to '.xls', {action: 'download', id: 'new', format: 'xls'}, class: "btn btn-sm btn-secondary" %>
+      </td>
+    </tr>
+    <% @account_exports.each do |account_export| %>
+      <%= render "tr", account_export: account_export %>
+    <% end %>
+    <% if AccountExport.count > @account_exports.count -%>
+      <tr>
+        <td>
+          <%= link_to('show all history', {action: 'all'}, {remote: true, class: "btn btn-sm btn-primary"}) %>
+        </td>
+        <td>&nbsp;</td>
+      </tr>
+    <% end -%>
+  </tbody>

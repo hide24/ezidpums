@@ -1,4 +1,8 @@
 class AccountExport < ApplicationRecord
+  def filename(format)
+    'accounts.%s.%s' % [created_at.to_formatted_s(:number), format]
+  end
+
   def self.dump
     account_export = self.create(raw: Account.dump(scope: :one))
     account_export.csv = self.create_csv
