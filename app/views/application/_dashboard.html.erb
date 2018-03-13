@@ -1,0 +1,36 @@
+<div class="dashboard">
+  <div class="dashboard_navi">
+    <ul class="navi_links">
+      <li class="navi_item<%= ' active_navi' if controller.controller_name == "id_providers" %> navi_item_top">
+        <%= link_to controller: 'id_providers', action: 'edit' do -%>
+          IdP Settings<p class="right_arrow_button"> </p>
+        <% end -%>
+      </li>
+      <li class="navi_item<%= ' active_navi' if controller.controller_name == "accounts" %>">
+        <%= link_to controller: 'accounts', action: 'index' do -%>
+          Accounts<p class="right_arrow_button"> </p>
+        <% end -%>
+      </li>
+      <li class="navi_item<%= ' active_navi' if controller.controller_name == "ldap" %>">
+        <%= link_to controller: 'ldap', action: 'index' do -%>
+          LDAP administration<p class="right_arrow_button"> </p>
+        <% end -%>
+      </li>
+      <li class="navi_item<%= ' active_navi' if controller.controller_name == "ldap_attributes" %>">
+        <%= link_to controller: 'ldap_attributes', action: 'index' do -%>
+          LDAP attributes<p class="right_arrow_button"> </p>
+        <% end -%>
+      </li>
+      <li class="navi_item<%= ' active_navi' if controller.controller_name == "idp_attributes" %>">
+        <%= link_to controller: 'idp_attributes', action: 'index' do -%>
+          Shibboleth attributes<p class="right_arrow_button"> </p>
+        <% end -%>
+      </li>
+      <li class="navi_item<%= ' active_navi' if controller.controller_name == "service_providers" %>">
+        <%= link_to controller: 'service_providers', action: 'index' do -%>
+          Service Providers<p class="right_arrow_button"> </p>
+        <% end -%>
+      </li>
+    </ul>
+  </div>
+</div>

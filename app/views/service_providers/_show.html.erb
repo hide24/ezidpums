@@ -38,7 +38,7 @@
 <div class="form-group field">
   <strong><label class="control-label col-lg-2">SendAttributes</label></strong>
   <div class="form-control">
-    <%= @service_provider.ldap_attributes.map(&:name).join(', ') %>
+    <%= @service_provider.idp_attributes.map(&:name).join(', ') %>
   </div>
 </div>
 

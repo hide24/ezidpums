@@ -7,10 +7,30 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <div class="container">
-      <%= yield %>
+    <header class="site_header">
+      <div class="site_header_inner">
+        <p class="logo"></p>
+        <p class="page_title"><hi><%= @page_title if @page_tilte.present? %></h1></p>
+      </div>
+    </header>
+
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-2">
+  <%= render partial: 'dashboard'%>
+      </div>
+      <div class="col-7 content_section_with_navi">
+  <%= yield %>
+      </div>
     </div>
+    
+    <footer class="site_footer">
+      <div class="site_footer_inner">
+        <div class="site_footer_copyright">
+          &copy; National Institute of Informatics
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
