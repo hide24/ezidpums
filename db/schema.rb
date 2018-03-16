@@ -31,10 +31,11 @@ ActiveRecord::Schema.define(version: 20180313072250) do
   create_table "id_providers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "entity_id"
+    t.string "host_name"
+    t.string "scope"
     t.text "cert"
     t.text "key"
     t.text "ca_cert"
-    t.string "ldap_connecter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,8 +50,7 @@ ActiveRecord::Schema.define(version: 20180313072250) do
   create_table "idp_attributes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "order"
     t.string "name"
-    t.text "attribute_filter"
-    t.string "field_type"
+    t.text "attribute_resolver"
     t.boolean "enable"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

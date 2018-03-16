@@ -4,30 +4,26 @@ one:
   id: 1
   order: 1
   name: displayName
-  attribute_filter: "<foo>bar</foo>"
-  field_type: text
+  attribute_resolver: "<foo>bar</foo>"
   enable: true
 
 two:
   id: 2
   order: 2
   name: mail
-  attribute_filter: "<foo>bar</foo>"
-  field_type: text
+  attribute_resolver: "<foo>bar</foo>"
   enable: true
 
 three:
   id: 3
   order: 3
   name: userPassword
-  attribute_filter: null
-  field_type: password
+  attribute_resolver: null
   enable: false
 
 four:
   id: 4
   order: 4
   name: uid
-  attribute_filter: null
-  field_type: text
+  attribute_resolver: null
   enable: true

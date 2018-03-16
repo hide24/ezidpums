@@ -1,0 +1,28 @@
+<EntityDescriptor entityID="<%= @id_provider.entity_id %>">
+    <IDPSSODescriptor protocolSupportEnumeration="urn:mace:shibboleth:1.0 urn:oasis:names:tc:SAML:2.0:protocol">
+        <Extensions>
+            <shibmd:Scope regexp="false"><%= @id_provider.scope %></shibmd:Scope>
+        </Extensions>
+        <KeyDescriptor>
+            <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <ds:X509Data>
+                    <ds:X509Certificate>
+<%= @id_provider.cert %>
+                    </ds:X509Certificate>
+                </ds:X509Data>
+            </ds:KeyInfo>
+        </KeyDescriptor>
+
+<NameIDFormat>urn:mace:shibboleth:1.0:nameIdentifier</NameIDFormat>
+<NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
+<SingleSignOnService Binding="urn:mace:shibboleth:1.0:profiles:AuthnRequest"
+    Location="https://<%= @id_provider.host_name %>/idp/profile/Shibboleth/SSO" />
+<SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+    Location="https://<%= @id_provider.host_name %>/idp/profile/SAML2/POST/SSO" />
+<SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+    Location="https://<%= @id_provider.host_name %>/idp/profile/SAML2/Redirect/SSO" />
+
+    </IDPSSODescriptor>
+
+<%= @id_provider.extra %>
+</EntityDescriptor>

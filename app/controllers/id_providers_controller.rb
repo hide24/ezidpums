@@ -2,7 +2,11 @@ class IdProvidersController < ApplicationController
   before_action :set_id_provider, only: [:show, :edit, :update]
 
   def index
-    redirect_to action: 'edit'
+    @id_provider = IdProvider.first
+    respond_to do |format|
+      format.any { render :edit }
+      format.json { render :show, status: :ok, location: @id_provider }
+    end
   end
 
   # GET /id_providers/1
@@ -36,6 +40,6 @@ class IdProvidersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def id_provider_params
-      params.require(:id_provider).permit(:name, :entity_id, :cert, :key, :ca_cert, :ldap_connecter)
+      params.require(:id_provider).permit(:name, :entity_id, :host_name, :scope, :cert, :key, :ca_cert)
     end
 end

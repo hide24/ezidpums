@@ -3,15 +3,17 @@
 one:
   name: MyString
   entity_id: MyString
+  host_name: foo.org
+  scope: org
   cert: MyText
   key: MyText
   ca_cert: MyText
-  ldap_connecter: MyString
 
 two:
   name: MyString
   entity_id: MyString
+  host_name: bar.org
+  scope: org
   cert: MyText
   key: MyText
   ca_cert: MyText
-  ldap_connecter: MyString

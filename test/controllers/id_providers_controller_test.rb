@@ -16,7 +16,7 @@ class IdProvidersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update id_provider" do
-    patch id_provider_url(@id_provider), params: { id_provider: { ca_cert: @id_provider.ca_cert, cert: @id_provider.cert, entity_id: @id_provider.entity_id, key: @id_provider.key, ldap_connecter: @id_provider.ldap_connecter, name: @id_provider.name } }
+    patch id_provider_url(@id_provider), params: { id_provider: { ca_cert: @id_provider.ca_cert, cert: @id_provider.cert, entity_id: @id_provider.entity_id, key: @id_provider.key, name: @id_provider.name } }
     assert_response :success
   end
 end

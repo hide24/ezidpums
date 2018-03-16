@@ -17,7 +17,7 @@ class IdpAttributesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create idp_attribute" do
     assert_difference('IdpAttribute.count') do
-      post idp_attributes_url, params: { idp_attribute: { attribute_filter: '@idp_attribute.attribute_filter', enable: '@idp_attribute.enable', field_type: '@idp_attribute.field_type', name: '@idp_attribute.name', order: '@idp_attribute.order'.to_i } }
+      post idp_attributes_url, params: { idp_attribute: { attribute_resolver: '@idp_attribute.attribute_resolver', enable: '@idp_attribute.enable', name: '@idp_attribute.name', order: '@idp_attribute.order'.to_i } }
     end
 
     assert_redirected_to idp_attribute_url(IdpAttribute.last)
@@ -34,7 +34,7 @@ class IdpAttributesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update idp_attribute" do
-    patch idp_attribute_url(@idp_attribute), params: { idp_attribute: { attribute_filter: @idp_attribute.attribute_filter, enable: @idp_attribute.enable, field_type: @idp_attribute.field_type, name: @idp_attribute.name, order: @idp_attribute.order } }
+    patch idp_attribute_url(@idp_attribute), params: { idp_attribute: { attribute_resolver: @idp_attribute.attribute_resolver, enable: @idp_attribute.enable, name: @idp_attribute.name, order: @idp_attribute.order } }
     assert_redirected_to idp_attribute_url(@idp_attribute)
   end
 

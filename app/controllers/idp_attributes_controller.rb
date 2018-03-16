@@ -73,6 +73,6 @@ class IdpAttributesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idp_attribute_params
-      params.require(:idp_attribute).permit(:order, :name, :attribute_filter, :field_type, :enable)
+      params.require(:idp_attribute).permit(:order, :name, :attribute_resolver, :enable)
     end
 end

@@ -43,8 +43,6 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'autoprefixer-rails'
-gem 'dropzonejs-rails'
-#gem 'webpacker', '~> 3.3'
 
 # xls support
 gem 'spreadsheet'

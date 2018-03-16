@@ -17,8 +17,18 @@
   </div>
 
   <div class="form-group field">
-    <strong><%= form.label :entity_id, class: 'control-label col-lg-2' %></strong>
+    <strong><%= form.label 'EntityId', class: 'control-label col-lg-2' %></strong>
     <%= form.text_field :entity_id, id: :id_provider_entity_id, class: "form-control" %>
+  </div>
+
+  <div class="form-group field">
+    <strong><%= form.label :host_name, class: 'control-label col-lg-2' %></strong>
+    <%= form.text_field :host_name, id: :id_provider_host_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group field">
+    <strong><%= form.label :scope, class: 'control-label col-lg-2' %></strong>
+    <%= form.text_field :scope, id: :id_provider_scope, class: "form-control" %>
   </div>
 
   <div class="form-group field">
@@ -34,11 +44,6 @@
   <div class="form-group field">
     <strong><%= form.label :ca_cert, class: 'control-label col-lg-2' %></strong>
     <%= form.text_area :ca_cert, id: :id_provider_ca_cert, class: "form-control" %>
-  </div>
-
-  <div class="form-group field">
-    <strong><%= form.label :ldap_connecter, class: 'control-label col-lg-2' %></strong>
-    <%= form.text_field :ldap_connecter, id: :id_provider_ldap_connecter, class: "form-control" %>
   </div>
 
   <div class="actions">

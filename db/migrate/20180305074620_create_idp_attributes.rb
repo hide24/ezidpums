@@ -3,8 +3,7 @@ class CreateIdpAttributes < ActiveRecord::Migration[5.1]
     create_table :idp_attributes do |t|
       t.integer :order
       t.string :name
-      t.text :attribute_filter
-      t.string :field_type
+      t.text :attribute_resolver
       t.boolean :enable, defaul: true
 
       t.timestamps
