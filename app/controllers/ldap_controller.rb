@@ -1,4 +1,6 @@
 class LdapController < ApplicationController
+  protect_from_forgery except: :download
+
   def index
     @account_exports = AccountExport.order('created_at desc').take(10)
   end
@@ -15,6 +17,9 @@ class LdapController < ApplicationController
   def download
     if params[:id] == 'new'
       @account_export = AccountExport.dump
+      @format = params[:fmt]
+      render action: 'download'
+      return
     else
       @account_export = AccountExport.find(params[:id])
     end

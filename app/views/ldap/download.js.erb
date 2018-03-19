@@ -1,0 +1,2 @@
+$("#attr-ae-new").after("<%= j(render('tr', account_export: @account_export)) %>");
+location = "<%= url_for action: 'download', id: @account_export, format: @format %>";
