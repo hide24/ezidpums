@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :accounts
 
   match 'ldap(/:action(/:id(.format)))', controller: 'ldap', via: [:get, :post]
+  match 'idp/update_settings', controller: 'id_providers', action: 'update_settings', via: [:get, :post]
 
   root 'id_providers#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

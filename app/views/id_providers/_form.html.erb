@@ -47,6 +47,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit class: "btn btn-primary" %>
+    <%= form.submit 'Save setting', class: "btn btn-primary" %>
+    <%= link_to('Update Shibboleth settings', {action: 'update_settings'}, {data: { confirm: 'Are you sure?' }, class: "btn btn-danger"}) %>
   </div>
 <% end %>

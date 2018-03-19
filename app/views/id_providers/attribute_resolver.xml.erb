@@ -5,7 +5,7 @@
         xsi:schemaLocation="urn:mace:shibboleth:2.0:resolver http://shibboleth.net/schema/idp/shibboleth-attribute-resolver.xsd">
 
 <% @idp_attributes.each do|idp_attribute| -%>
-<%= idp_attribute.attribute_resolver %>
+<%=raw idp_attribute.attribute_resolver %>
 <% end %>
     <resolver:DataConnector id="myLDAP" xsi:type="dc:LDAPDirectory"
         ldapURL="%{idp.attribute.resolver.LDAP.ldapURL}"

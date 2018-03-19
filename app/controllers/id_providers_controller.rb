@@ -1,8 +1,7 @@
 class IdProvidersController < ApplicationController
-  before_action :set_id_provider, only: [:show, :edit, :update]
+  before_action :set_id_provider
 
   def index
-    @id_provider = IdProvider.first
     respond_to do |format|
       format.any { render :edit }
       format.json { render :show, status: :ok, location: @id_provider }
@@ -32,10 +31,50 @@ class IdProvidersController < ApplicationController
     end
   end
 
+  def update_settings
+    File.open(File.join(::SHIBBOLETH_CONFIG_DIR, 'attribute-resolver.xml'), 'w') do |file|
+      file.write @id_provider.attribute_resolver
+    end
+    File.open(File.join(SHIBBOLETH_CONFIG_DIR, 'attribute-filter.xml'), 'w') do |file|
+      file.write @id_provider.attribute_filter
+    end
+    File.open(File.join(SHIBBOLETH_CONFIG_DIR, 'metadata-providers.xml'), 'w') do |file|
+      file.write @id_provider.metadata_providers
+    end
+    File.open(File.join(SHIBBOLETH_CONFIG_DIR, 'idp.properties'), 'w') do |file|
+      file.write @id_provider.idp_properties
+    end
+    File.open(File.join(SHIBBOLETH_CONFIG_DIR, 'ldap.properties'), 'w') do |file|
+      file.write @id_provider.ldap_properties
+    end
+    File.open(File.join(SHIBBOLETH_CONFIG_DIR, 'saml-nameid.properties'), 'w') do |file|
+      file.write @id_provider.saml_nameid_properties
+    end
+
+    File.open(File.join(SHIBBOLETH_METADATA_DIR, 'idp-metadata.xml'), 'w') do |file|
+      file.write @id_provider.metadata
+    end
+
+    File.open(File.join(SHIBBOLETH_CERT_DIR, 'idp.cer'), 'w') do |file|
+      file.write @id_provider.cert
+    end
+    File.open(File.join(SHIBBOLETH_CERT_DIR, 'idp.key'), 'w')do |file|
+      file.write @id_provider.key
+    end
+    if @id_provider.ca_cert.present?
+      File.open(File.join(SHIBBOLETH_CERT_DIR, 'ca.cer'), 'w') do |file|
+        file.write @id_provider.ca_cert
+      end
+    end
+
+    flash[:notice] =  ['Shibboleth configration was successfully updated.', 'Please restart Shibboleth IdP service.']
+    redirect_to action: 'index'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_id_provider
-      @id_provider = IdProvider.find(params[:id]) rescue IdProvider.first
+      @id_provider = IdProvider.first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
