@@ -1,7 +1,7 @@
       <tr id="attr-la-<%= ldap_attribute.id %>">
         <td><%= ldap_attribute.order %></td>
         <td><%= ldap_attribute.name %></td>
-        <td><%= ldap_attribute.field_type %></td>
+        <td><%= ldap_attribute.field_type.name %></td>
         <td><%= ldap_attribute.enable %></td>
         <td>
           <%= link_to 'Show', ldap_attribute, remote: true, class: "btn btn-sm btn-secondary"  %>

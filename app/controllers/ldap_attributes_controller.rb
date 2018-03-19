@@ -73,6 +73,6 @@ class LdapAttributesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ldap_attribute_params
-      params.require(:ldap_attribute).permit(:order, :name, :field_type, :enable)
+      params.require(:ldap_attribute).permit(:order, :name, :field_type_id, :enable)
     end
 end

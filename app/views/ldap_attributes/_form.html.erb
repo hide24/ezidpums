@@ -22,7 +22,7 @@
 
     <div class="form-group field">
       <strong><%= form.label :field_type %></strong>
-      <%= form.text_field :field_type, id: :ldap_attribute_field_type, class: "form-control"  %>
+      <%= form.select( :field_type_id, FieldType.options, {prompt: 'select one'}, {id: :ldap_attribute_field_type, class: "form-control"} ) %>
     </div>
 
     <div class="checkbox field">

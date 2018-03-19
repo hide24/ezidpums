@@ -9,11 +9,15 @@
   <div class="modal-body">
 <p id="notice"><%= notice %></p>
 
-<% LdapAttribute.attribute_names.each do |ldap_attribute| -%>
+<% LdapAttribute.order(:order).each do |ldap_attribute| -%>
 <div class="form-group field">
-  <strong><label class="control-label col-lg-2"><%= ldap_attribute %></label></strong>
+  <strong><label class="control-label col-lg-2"><%= ldap_attribute.name %></label></strong>
   <div class="form-control">
-    <%= @account.send(ldap_attribute.to_sym) %>
+<% if ldap_attribute.field_type.display -%>
+    <%= ldap_attribute.field_type.display %>
+<% else -%>
+    <%= @account.send(ldap_attribute.name.to_sym) %>
+<% end -%>
   </div>
 </div>
 <% end -%>

@@ -17,7 +17,7 @@ class LdapAttributesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create ldap_attribute" do
     assert_difference('LdapAttribute.count') do
-      post ldap_attributes_url, params: { ldap_attribute: { enable: @ldap_attribute.enable, field_type: @ldap_attribute.field_type, name: 'cn', order: @ldap_attribute.order } }
+      post ldap_attributes_url, params: { ldap_attribute: { enable: @ldap_attribute.enable, field_type_id: @ldap_attribute.field_type_id, name: 'cn', order: @ldap_attribute.order } }
     end
 
     assert_redirected_to ldap_attribute_url(LdapAttribute.last)
@@ -34,7 +34,7 @@ class LdapAttributesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update ldap_attribute" do
-    patch ldap_attribute_url(@ldap_attribute), params: { ldap_attribute: { enable: @ldap_attribute.enable, field_type: @ldap_attribute.field_type, name: @ldap_attribute.name, order: @ldap_attribute.order } }
+    patch ldap_attribute_url(@ldap_attribute), params: { ldap_attribute: { enable: @ldap_attribute.enable, field_type_id: @ldap_attribute.field_type_id, name: @ldap_attribute.name, order: @ldap_attribute.order } }
     assert_redirected_to ldap_attribute_url(@ldap_attribute)
   end
 

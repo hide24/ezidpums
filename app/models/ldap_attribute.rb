@@ -11,4 +11,8 @@ class LdapAttribute < ApplicationRecord
   def self.attribute_names
     self.where(enable: true).order(:order).pluck(:name)
   end
+
+  def field_type
+    FieldType.find(field_type_id)
+  end
 end

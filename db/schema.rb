@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20180313072250) do
   create_table "ldap_attributes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "order"
     t.string "name"
-    t.string "field_type"
+    t.integer "field_type_id"
     t.boolean "enable"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

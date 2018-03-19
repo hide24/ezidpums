@@ -18,11 +18,14 @@ class LdapController < ApplicationController
     if params[:id] == 'new'
       @account_export = AccountExport.dump
       @format = params[:fmt]
-      render action: 'download'
+      respond_to do |format|
+        format.html { rsend_data @account_export.send(@format.to_sym), filename: @account_export.filename(@format) }
+        format.js
+      end
       return
-    else
-      @account_export = AccountExport.find(params[:id])
     end
+
+    @account_export = AccountExport.find(params[:id])
 
     respond_to do |format|
       format.html { send_data @account_export.csv, filename: @account_export.filename('csv') }
