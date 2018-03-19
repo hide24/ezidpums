@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # IdProvider must be exists one record.
-IdProvider.create(name: '')
+IdProvider.create(name: '', entity_id: IDP_ENTITY_ID, scope: IDP_SCOPE, host_name: IDP_HOST_NAME)
 
 # Set up minimam LDAP attributes
 ldap_attribute_yml =<<-EOY

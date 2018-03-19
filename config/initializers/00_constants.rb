@@ -16,6 +16,9 @@ LDAP_ACCOUNT_BASE_DN_ALL = {
 LDAP_ACCOUNT_BASE_DN = LDAP_ACCOUNT_BASE_DN_ALL[Rails.env]
 
 #IdP
+IDP_HOST_NAME = ENV['IDP_HOST_NAME']
+IDP_ENTITY_ID = 'https://%s/idp/shibboleth' % IDP_HOST_NAME
+IDP_SCOPE = ENV['IDP_SCOPE']
 SHIBBOLETH_CONFIG_DIR = '/opt/shibboleth-idp/conf'
 SHIBBOLETH_METADATA_DIR = '/opt/shibboleth-idp/metadata'
 SHIBBOLETH_CERT_DIR = '/opt/shibboleth-idp/credentials'
