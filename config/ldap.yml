@@ -1,6 +1,5 @@
 development:
   host: ldap
-#  base: ou=test,<%= ENV['LDAP_BASE_DN'] %>
   base: ou=development,<%= ENV['LDAP_BASE_DN'] %>
   bind_dn: <%= ENV['LDAP_BIND_DN'] %>
   password: <%= ENV['LDAP_BIND_PASSWORD'] %>

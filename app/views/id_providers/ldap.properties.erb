@@ -27,13 +27,13 @@ idp.authn.LDAP.returnAttributes                 = passwordExpirationTime,loginGr
 
 # Search DN resolution, used by anonSearchAuthenticator, bindSearchAuthenticator
 # for AD: CN=Users,DC=example,DC=org
-idp.authn.LDAP.baseDN                           = ou=accounts,ou=production,<%= ENV['LDAP_BASE_DN'] %>
+idp.authn.LDAP.baseDN                           = ou=accounts,<%= LDAP_ACCOUNT_BASE_DN %>
 idp.authn.LDAP.subtreeSearch                    = true
 idp.authn.LDAP.userFilter                       = (uid={user})
 # bind search configuration
 # for AD: idp.authn.LDAP.bindDN=adminuser@domain.com
-idp.authn.LDAP.bindDN                           = <%= ENV['LDAP_BIND_DN'] %>
-idp.authn.LDAP.bindDNCredential                 = <%= ENV['LDAP_BIND_PASSWORD'] %>
+idp.authn.LDAP.bindDN                           = <%= LDAP_BIND_DN %>
+idp.authn.LDAP.bindDNCredential                 = <%= LDAP_BIND_PASSWORD %>
 
 # Format DN resolution, used by directAuthenticator, adAuthenticator
 # for AD use idp.authn.LDAP.dnFormat=%s@domain.com

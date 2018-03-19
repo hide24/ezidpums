@@ -10,13 +10,13 @@ default: &default
   port: 3306
   pool: 5
   timeout: 5000
-  host: db
+  host: <%= MYSQL_HOST %>
+  username: <%= MYSQL_ROOT_USER %>
+  password: <%= MYSQL_ROOT_PASSWORD %>
 
 development:
   <<: *default
   database: db/development
-  username: root
-  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,11 +24,7 @@ development:
 test:
   <<: *default
   database: db/test
-  username: root
-  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
 
 production:
   <<: *default
   database: db/production
-  username: root
-  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
