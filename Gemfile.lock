@@ -79,8 +79,6 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
-    dropzonejs-rails (0.8.2)
-      rails (> 3.1)
     erubi (1.7.1)
     execjs (2.7.0)
     fast_gettext (1.6.0)
@@ -123,6 +121,7 @@ GEM
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    pkg-config (1.2.9)
     popper_js (1.12.9)
     public_suffix (3.0.2)
     puma (3.11.3)
@@ -197,6 +196,8 @@ GEM
     turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2018.3)
+      tzinfo (>= 1.0.0)
     uglifier (4.1.6)
       execjs (>= 0.3.0, < 3)
     web-console (3.5.1)
@@ -220,13 +221,13 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
-  dropzonejs-rails
   jbuilder (~> 2.5)
   jquery-rails
   jquery-ui-rails
   listen (>= 3.0.5, < 3.2)
   mysql2
   net-ldap
+  pkg-config (~> 1.1)
   puma (~> 3.7)
   rails (~> 5.1.5)
   sass-rails (~> 5.0)

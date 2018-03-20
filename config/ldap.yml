@@ -1,18 +1,18 @@
 development:
   host: ldap
-  base: ou=development,<%= ENV['LDAP_BASE_DN'] %>
-  bind_dn: <%= ENV['LDAP_BIND_DN'] %>
-  password: <%= ENV['LDAP_BIND_PASSWORD'] %>
+  base: ou=development,<%= ENV['LDAP_BASE_DN'] || 'dc=foo,dc=bar,dc=org' %>
+  bind_dn: <%= ENV['LDAP_BIND_DN'] || 'cn=admin,dc=foo,dc=bar,dc=org' %>
+  password: <%= ENV['LDAP_BIND_PASSWORD'] || 'password' %>
 
 test:
   host: ldap
-  base: ou=test,<%= ENV['LDAP_BASE_DN'] %>
-  bind_dn: <%= ENV['LDAP_BIND_DN'] %>
-  password: <%= ENV['LDAP_BIND_PASSWORD'] %>
+  base: ou=test,<%= ENV['LDAP_BASE_DN'] || 'dc=foo,dc=bar,dc=org' %>
+  bind_dn: <%= ENV['LDAP_BIND_DN'] || 'cn=admin,dc=foo,dc=bar,dc=org' %>
+  password: <%= ENV['LDAP_BIND_PASSWORD'] || 'password' %>
 
 production:
   host: ldap
-  base: ou=production,<%= ENV['LDAP_BASE_DN'] %>
-  bind_dn: <%= ENV['LDAP_BIND_DN'] %>
-  password: <%= ENV['LDAP_BIND_PASSWORD'] %>
+  base: ou=production,<%= ENV['LDAP_BASE_DN'] || 'dc=foo,dc=bar,dc=org' %>
+  bind_dn: <%= ENV['LDAP_BIND_DN'] || 'cn=admin,dc=foo,dc=bar,dc=org' %>
+  password: <%= ENV['LDAP_BIND_PASSWORD'] || 'password' %>
 
