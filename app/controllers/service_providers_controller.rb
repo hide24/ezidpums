@@ -73,6 +73,6 @@ class ServiceProvidersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_provider_params
-      params.require(:service_provider).permit(:name, :entity_id, :certification, :enable)
+      params.require(:service_provider).permit(:name, :entity_id, :metadata, :enable)
     end
 end

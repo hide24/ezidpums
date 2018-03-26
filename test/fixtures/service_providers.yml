@@ -4,19 +4,19 @@ one:
   id: 1
   name: MySP1
   entity_id: https://mysp1/shibboleth-sp/
-  certification: MyText
+  metadata: MyText
   enable: false
 
 two:
   id: 2
   name: MySp2
   entity_id: https://mysp2/shibboleth-sp/
-  certification: null
+  metadata: null
   enable: false
 
 three:
   id: 3
   name: MySP3
   entity_id: https://mysp3/shibboleth-sp/
-  certification: so_long_text_so_long_text_so_long_text_so_long_text_so_long_text_so_long_text
+  metadata: so_long_text_so_long_text_so_long_text_so_long_text_so_long_text_so_long_text
   enable: false

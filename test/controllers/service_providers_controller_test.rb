@@ -17,7 +17,7 @@ class ServiceProvidersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create service_provider" do
     assert_difference('ServiceProvider.count') do
-      post service_providers_url, params: { service_provider: { certification: '@service_provider.certification', enable: '@service_provider.enable', entity_id: '@service_provider.entity_id', name: '@service_provider.name' } }
+      post service_providers_url, params: { service_provider: { metadata: '@service_provider.metadata', enable: '@service_provider.enable', entity_id: '@service_provider.entity_id', name: '@service_provider.name' } }
     end
 
     assert_redirected_to service_provider_url(ServiceProvider.last)
@@ -34,7 +34,7 @@ class ServiceProvidersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update service_provider" do
-    patch service_provider_url(@service_provider), params: { service_provider: { certification: @service_provider.certification, enable: @service_provider.enable, entity_id: @service_provider.entity_id, name: @service_provider.name } }
+    patch service_provider_url(@service_provider), params: { service_provider: { metadata: @service_provider.metadata, enable: @service_provider.enable, entity_id: @service_provider.entity_id, name: @service_provider.name } }
     assert_redirected_to service_provider_url(@service_provider)
   end
 

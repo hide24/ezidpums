@@ -3,7 +3,7 @@ class CreateServiceProviders < ActiveRecord::Migration[5.1]
     create_table :service_providers do |t|
       t.string :name
       t.string :entity_id
-      t.text :certification
+      t.text :metadata
       t.boolean :enable, default: true
 
       t.timestamps
