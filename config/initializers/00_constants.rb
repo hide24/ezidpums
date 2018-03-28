@@ -26,3 +26,4 @@ SHIBBOLETH_CERT_DIR = '/opt/shibboleth-idp/credentials'
 
 HTTP_SSL_CERT_DIR = '/opt/httpd/certs'
 HTTP_SSL_KEY_DIR = '/opt/httpd/certs'
+JETTY_KEYSTORE_PASSWORD = ENV['JETTY_KEYSTORE_PASSWORD']

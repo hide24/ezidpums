@@ -12,6 +12,7 @@ ARG LDAP_BIND_PASSWORD
 ARG MYSQL_ROOT_PASSWORD
 ARG IDP_HOST_NAME
 ARG IDP_SCOPE
+ARG JETTY_KEYSTORE_PASSWORD
 
 # ARGs values copy to shell variables.
 # rails command will use it.
@@ -21,6 +22,7 @@ ENV LDAP_BIND_PASSWORD $LDAP_BIND_PASSWORD
 ENV MYSQL_ROOT_PASSWORD $MYSQL_ROOT_PASSWORD
 ENV IDP_HOST_NAME $IDP_HOST_NAME
 ENV IDP_SCOPE $IDP_SCOPE
+ENV JETTY_KEYSTORE_PASSWORD $JETTY_KEYSTORE_PASSWORD
 
 ENV APP_ROOT /home/app/ezidpums
 WORKDIR $APP_ROOT
@@ -61,5 +63,6 @@ RUN sed -e "s/__secret_key_base__/`bundle exec rails secret`/" $APP_ROOT/nginx_w
     sed -i -e "s/__ldap_bind_password__/$LDAP_BIND_PASSWORD/" /etc/nginx/sites-enabled/webapp.conf && \
     sed -i -e "s/__mysql_root_password__/$MYSQL_ROOT_PASSWORD/" /etc/nginx/sites-enabled/webapp.conf && \
     sed -i -e "s/__idp_host_name__/$IDP_HOST_NAME/" /etc/nginx/sites-enabled/webapp.conf && \
-    sed -i -e "s/__idp_socpe__/$IDP_SCOPE/" /etc/nginx/sites-enabled/webapp.conf
+    sed -i -e "s/__idp_socpe__/$IDP_SCOPE/" /etc/nginx/sites-enabled/webapp.conf && \
+    sed -i -e "s/__jetty_keystore_password__/$JETTY_KEYSTORE_PASSWORD/" /etc/nginx/sites-enabled/webapp.conf
 RUN bundle exec rails assets:precompile

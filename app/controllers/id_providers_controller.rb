@@ -86,7 +86,7 @@ class IdProvidersController < ApplicationController
         end
       end
       Dir.chdir(SHIBBOLETH_CERT_DIR) do
-        `openssl pkcs12 -inkey idp.key -in idp.cer -export -out idp-browser.p12 -password pass:password`
+        `openssl pkcs12 -inkey idp.key -in idp.cer -export -out idp-browser.p12 -password pass:#{JETTY_KEYSTORE_PASSWORD}`
       end
     end
 
