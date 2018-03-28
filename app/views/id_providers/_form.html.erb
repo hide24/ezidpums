@@ -1,15 +1,4 @@
 <%= form_with(model: id_provider, local: true) do |form| %>
-  <% if id_provider.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(id_provider.errors.count, "error") %> prohibited this id_provider from being saved:</h2>
-
-      <ul>
-      <% id_provider.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
 <!--
   <div class="form-group field">
@@ -35,21 +24,83 @@
 
   <div class="form-group field">
     <strong><%= form.label :cert, class: 'control-label col-lg-2' %></strong>
-    <%= form.text_area :cert, id: :id_provider_cert, class: "form-control" %>
+    <%= form.text_area :cert, id: :id_provider_cert, class: "form-control", rows: 10 %>
   </div>
 
   <div class="form-group field">
     <strong><%= form.label :key, class: 'control-label col-lg-2' %></strong>
-    <%= form.text_area :key, id: :id_provider_key, class: "form-control" %>
+    <%= form.text_area :key, id: :id_provider_key, class: "form-control", rows: 10 %>
   </div>
 
   <div class="form-group field">
-    <strong><%= form.label :ca_cert, class: 'control-label col-lg-2' %></strong>
-    <%= form.text_area :ca_cert, id: :id_provider_ca_cert, class: "form-control" %>
+    <strong><%= form.label 'CA cert', class: 'control-label col-lg-2' %></strong>
+    <%= form.text_area :ca_cert, id: :id_provider_ca_cert, class: "form-control", rows: 10 %>
   </div>
 
   <div class="actions">
     <%= form.submit 'Save setting', class: "btn btn-primary" %>
-    <%= link_to('Update Shibboleth settings', {action: 'update_settings'}, {data: { confirm: 'Are you sure?' }, class: "btn btn-danger"}) %>
+    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#shibboleth_settings-modal">Update Shibboleth settings</a>
   </div>
 <% end %>
+
+<div class="modal fade" id="shibboleth_settings-modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Shibboleth settings</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </div>
+<%= form_tag({action: 'update_settings'}, {remote: true}) do |form| %>
+      <div class="modal-body">
+        <p>
+        Update Shibboleth settings. Following files will be overwrite by current settings.
+        Shibboleth IdP will not be restart automatically. You should restart IdP for apply new settings.
+        </p>
+        <div class="checkbox field">
+          <%= check_box_tag 'shibboleth_settings[attribute_resolver]', true, true %>
+          <strong><label for="shibboleth_settings_attribute_resolver" >attribute-resolver.xml</label></strong>
+        </div>
+        <div class="checkbox field">
+          <%= check_box_tag 'shibboleth_settings[attribute_filter]', true, true %>
+          <strong><label for="shibboleth_settings_attribute_filter" >attribute-filter.xml</label></strong>
+        </div>
+        <div class="checkbox field">
+          <%= check_box_tag 'shibboleth_settings[idp_properties]', true, true %>
+          <strong><label for="shibboleth_settings_idp_properties" >idp.properties</label></strong>
+        </div>
+        <div class="checkbox field">
+          <%= check_box_tag 'shibboleth_settings[ldap_properties]', true, true %>
+          <strong><label for="shibboleth_settings_ldap_properties" >ldap.properties</label></strong>
+        </div>
+        <div class="checkbox field">
+          <%= check_box_tag 'shibboleth_settings[saml_nameid_properties]', true, true %>
+          <strong><label for="shibboleth_settings_saml_nameid_properties" >saml-nameid.properties</label></strong>
+        </div>
+        <div class="checkbox field">
+          <%= check_box_tag 'shibboleth_settings[idp_metadata]', true, true %>
+          <strong><label for="shibboleth_settings_idp_metadata" >idp-metadata.xml</label></strong>
+        </div>
+        <div class="checkbox field">
+          <%= check_box_tag 'shibboleth_settings[sp_metadata]', true, true %>
+          <strong><label for="shibboleth_settings_sp_metadata" >sp-metadata.xml</label></strong>
+        </div>
+        <div class="checkbox field">
+          <%= check_box_tag 'shibboleth_settings[httpd_certs]', true, true %>
+          <strong><label for="shibboleth_settings_httpd_certs" >Apache SSL certs</label></strong>
+        </div>
+        <div class="checkbox field">
+          <%= check_box_tag 'shibboleth_settings[jetty_certs]', true, true %>
+          <strong><label for="shibboleth_settings_jetty_certs" >Jetty SSL keystore</label></strong>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button"class="btn btn-default"data-dismiss="modal">Close</button>
+        <%= submit_tag('Update Shibboleth settings', {data: { confirm: 'Are you sure?' }, class: "btn btn-primary"}) %>
+      </div>
+<% end %>
+    </div>
+  </div>
+</div>
+
+

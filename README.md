@@ -1,5 +1,5 @@
 # EzIdP/UMS
-This is simple user management system for Shibboleth IdP.
+This is a simple user management system for Shibboleth IdP.
 
 This app works with Shibboleth IdP, LDAP, RDB.
 

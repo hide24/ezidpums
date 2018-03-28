@@ -22,7 +22,8 @@ class IdProvidersController < ApplicationController
   def update
     respond_to do |format|
       if @id_provider.update(id_provider_params)
-        format.any { render :edit, notice: 'Id provider was successfully updated.' }
+        flash.now[:notice] = 'Id provider information was successfully updated.'
+        format.any { render :edit }
         format.json { render :show, status: :ok, location: @id_provider }
       else
         format.any { render :edit }
@@ -34,36 +35,58 @@ class IdProvidersController < ApplicationController
   def update_settings
     File.open(File.join(::SHIBBOLETH_CONFIG_DIR, 'attribute-resolver.xml'), 'w') do |file|
       file.write @id_provider.attribute_resolver
-    end
+    end if params[:shibboleth_settings][:attribute_resolver]
     File.open(File.join(SHIBBOLETH_CONFIG_DIR, 'attribute-filter.xml'), 'w') do |file|
       file.write @id_provider.attribute_filter
-    end
+    end if params[:shibboleth_settings][:attribute_filter]
     File.open(File.join(SHIBBOLETH_CONFIG_DIR, 'metadata-providers.xml'), 'w') do |file|
-      file.write @id_provider.metadata_providers
-    end
+      file.write @id_provider.metadata_providers(params[:shibboleth_settings][:idp_metadata], params[:shibboleth_settings][:sp_metadata])
+    end if params[:shibboleth_settings][:metadata_providers]
     File.open(File.join(SHIBBOLETH_CONFIG_DIR, 'idp.properties'), 'w') do |file|
       file.write @id_provider.idp_properties
-    end
+    end if params[:shibboleth_settings][:idp_properties]
     File.open(File.join(SHIBBOLETH_CONFIG_DIR, 'ldap.properties'), 'w') do |file|
       file.write @id_provider.ldap_properties
-    end
+    end if params[:shibboleth_settings][:ldap_properties]
     File.open(File.join(SHIBBOLETH_CONFIG_DIR, 'saml-nameid.properties'), 'w') do |file|
       file.write @id_provider.saml_nameid_properties
-    end
+    end if params[:shibboleth_settings][:saml_nameid_properties]
 
     File.open(File.join(SHIBBOLETH_METADATA_DIR, 'idp-metadata.xml'), 'w') do |file|
       file.write @id_provider.metadata
+    end if params[:shibboleth_settings][:idp_metadata]
+    File.open(File.join(SHIBBOLETH_METADATA_DIR, 'idp-metadata.xml'), 'w') do |file|
+      file.write @id_provider.sp_metadata
+    end if params[:shibboleth_settings][:sp_metadata]
+
+    if params[:shibboleth_settings][:httpd_certs]
+      File.open(File.join(HTTP_SSL_CERT_DIR, 'idp.cer'), 'w') do |file|
+        file.write @id_provider.cert
+      end
+      File.open(File.join(HTTP_SSL_KEY_DIR, 'idp.key'), 'w')do |file|
+        file.write @id_provider.key
+      end
+      if @id_provider.ca_cert.present?
+        File.open(File.join(HTTP_SSL_CERT_DIR, 'ca.cer'), 'w') do |file|
+          file.write @id_provider.ca_cert
+        end
+      end
     end
 
-    File.open(File.join(SHIBBOLETH_CERT_DIR, 'idp.cer'), 'w') do |file|
-      file.write @id_provider.cert
-    end
-    File.open(File.join(SHIBBOLETH_CERT_DIR, 'idp.key'), 'w')do |file|
-      file.write @id_provider.key
-    end
-    if @id_provider.ca_cert.present?
-      File.open(File.join(SHIBBOLETH_CERT_DIR, 'ca.cer'), 'w') do |file|
-        file.write @id_provider.ca_cert
+    if params[:shibboleth_settings][:jetty_certs]
+      File.open(File.join(SHIBBOLETH_CERT_DIR, 'idp.cer'), 'w') do |file|
+        file.write @id_provider.cert
+      end
+      File.open(File.join(SHIBBOLETH_CERT_DIR, 'idp.key'), 'w')do |file|
+        file.write @id_provider.key
+      end
+      if @id_provider.ca_cert.present?
+        File.open(File.join(SHIBBOLETH_CERT_DIR, 'idp.cer'), 'a') do |file|
+          file.write @id_provider.ca_cert
+        end
+      end
+      Dir.chdir(SHIBBOLETH_CERT_DIR) do
+        `openssl pkcs12 -inkey idp.key -in idp.cer -export -out idp-browser.p12 -password pass:password`
       end
     end
 

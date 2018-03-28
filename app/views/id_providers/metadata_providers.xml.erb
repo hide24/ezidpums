@@ -9,20 +9,40 @@
                         urn:mace:shibboleth:2.0:resource http://shibboleth.net/schema/idp/shibboleth-resource.xsd 
                         urn:mace:shibboleth:2.0:security http://shibboleth.net/schema/idp/shibboleth-security.xsd
                         urn:oasis:names:tc:SAML:2.0:metadata http://docs.oasis-open.org/security/saml/v2.0/saml-schema-metadata-2.0.xsd">
-    <!--
-    <MetadataProvider id="HTTPMetadata"
+
+<% if @idp_metadata -%>
+    <MetadataProvider id="idpMetadata"  xsi:type="FilesystemMetadataProvider" metadataFile="/opt/shibboleth-idp/metadata/idp_metadata.xml"/>
+<% end -%>
+<% if @sp_metadata -%>
+    <MetadataProvider id="spMetadata"  xsi:type="FilesystemMetadataProvider" metadataFile="/opt/shibboleth-idp/metadata/sp_metadata.xml"/>
+<% end -%>
+<% if @gakunin_fed -%>
+    <MetadataProvider id="GakuninFedHTTPMetadata"
                       xsi:type="FileBackedHTTPMetadataProvider"
-                      backingFile="%{idp.home}/metadata/localCopyFromXYZHTTP.xml"
-                      metadataURL="http://WHATEVER"> 
-        
-        <MetadataFilter xsi:type="SignatureValidation" certificateFile="%{idp.home}/credentials/metaroot.pem" />
-        <MetadataFilter xsi:type="RequiredValidUntil" maxValidityInterval="P30D"/>
+                      backingFile="%{idp.home}/metadata/gakunin-metadata-backing.xml"
+                      metadataURL="https://metadata.gakunin.nii.ac.jp/gakunin-metadata.xml?generation=2">
+        <MetadataFilter xsi:type="SignatureValidation" requireSignedRoot="true"
+                        certificateFile="%{idp.home}/credentials/gakunin-signer-2017.cer">
+        </MetadataFilter>
+        <MetadataFilter xsi:type="RequiredValidUntil" maxValidityInterval="P15D"/>
         <MetadataFilter xsi:type="EntityRoleWhiteList">
-            <RetainedRole>md:SPSSODescriptor</RetainedRole>
+                <RetainedRole>md:SPSSODescriptor</RetainedRole>
         </MetadataFilter>
     </MetadataProvider>
-    -->   
+<% end -%>
+<% if @gakunin_test -%>
+    <MetadataProvider id="GakuninTestHTTPMetadata"
+                      xsi:type="FileBackedHTTPMetadataProvider"
+                      backingFile="%{idp.home}/metadata/gakunin-test-metadata-backing.xml"
+                      metadataURL="https://metadata.gakunin.nii.ac.jp/gakunin-test-metadata.xml">
+        <MetadataFilter xsi:type="SignatureValidation" requireSignedRoot="true"
+                        certificateFile="%{idp.home}/credentials/gakunin-test-signer-2011.cer">
+        </MetadataFilter>
+        <MetadataFilter xsi:type="RequiredValidUntil" maxValidityInterval="P15D"/>
+        <MetadataFilter xsi:type="EntityRoleWhiteList">
+                <RetainedRole>md:SPSSODescriptor</RetainedRole>
+        </MetadataFilter>
+    </MetadataProvider>
+<% end -%>
 
-    <MetadataProvider id="LocalMetadata"  xsi:type="FilesystemMetadataProvider" metadataFile="/opt/shibboleth-idp/metadata/local_metadata.xml"/>
-    
 </MetadataProvider>

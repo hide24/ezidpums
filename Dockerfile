@@ -1,5 +1,11 @@
 FROM phusion/passenger-ruby25
 
+MAINTAINER Hidetoshi Yoshimoto hidetoshi.yoshimoto@gmail.com
+
+# Passenger app container cannot read shell variables.
+# It should be set by 'passenger_env_var' setting on nginx config.
+# See nginx_webapp.conf
+# This Dockerfile replace __VARS__ with Docker ARGs.
 ARG LDAP_BASE_DN
 ARG LDAP_BIND_DN
 ARG LDAP_BIND_PASSWORD
@@ -7,12 +13,15 @@ ARG MYSQL_ROOT_PASSWORD
 ARG IDP_HOST_NAME
 ARG IDP_SCOPE
 
+# ARGs values copy to shell variables.
+# rails command will use it.
 ENV LDAP_BASE_DN $LDAP_BASE_DN
 ENV LDAP_BIND_DN $LDAP_BIND_DN
 ENV LDAP_BIND_PASSWORD $LDAP_BIND_PASSWORD
 ENV MYSQL_ROOT_PASSWORD $MYSQL_ROOT_PASSWORD
 ENV IDP_HOST_NAME $IDP_HOST_NAME
 ENV IDP_SCOPE $IDP_SCOPE
+
 ENV APP_ROOT /home/app/ezidpums
 WORKDIR $APP_ROOT
 

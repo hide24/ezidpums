@@ -97,5 +97,6 @@ idp_attributes.each do |id, idp_attribute|
   IdpAttribute.create(idp_attribute)
 end
 
+ActiveLdap::Populate.ensure_base(Account, ou_base_class: ActiveLdap::Base)
 
 

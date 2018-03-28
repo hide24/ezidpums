@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20180313072250) do
   create_table "service_providers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "entity_id"
-    t.text "certification"
+    t.text "metadata"
     t.boolean "enable", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

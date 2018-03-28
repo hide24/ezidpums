@@ -23,3 +23,6 @@ IDP_SCOPE = ENV['IDP_SCOPE']
 SHIBBOLETH_CONFIG_DIR = '/opt/shibboleth-idp/conf'
 SHIBBOLETH_METADATA_DIR = '/opt/shibboleth-idp/metadata'
 SHIBBOLETH_CERT_DIR = '/opt/shibboleth-idp/credentials'
+
+HTTP_SSL_CERT_DIR = '/opt/httpd/certs'
+HTTP_SSL_KEY_DIR = '/opt/httpd/certs'
