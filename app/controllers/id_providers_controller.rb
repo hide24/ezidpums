@@ -61,28 +61,28 @@ class IdProvidersController < ApplicationController
 
     if params[:shibboleth_settings][:httpd_certs]
       File.open(File.join(HTTP_SSL_CERT_DIR, 'idp.cer'), 'w') do |file|
-        file.write @id_provider.cert
+        file.write @id_provider.cert_with_header
       end
       File.open(File.join(HTTP_SSL_KEY_DIR, 'idp.key'), 'w')do |file|
-        file.write @id_provider.key
+        file.write @id_provider.key_with_header
       end
       if @id_provider.ca_cert.present?
         File.open(File.join(HTTP_SSL_CERT_DIR, 'ca.cer'), 'w') do |file|
-          file.write @id_provider.ca_cert
+          file.write @id_provider.ca_cert_with_header
         end
       end
     end
 
     if params[:shibboleth_settings][:jetty_certs]
       File.open(File.join(SHIBBOLETH_CERT_DIR, 'idp.cer'), 'w') do |file|
-        file.write @id_provider.cert
+        file.write @id_provider.cert_with_header
       end
       File.open(File.join(SHIBBOLETH_CERT_DIR, 'idp.key'), 'w')do |file|
-        file.write @id_provider.key
+        file.write @id_provider.key_with_header
       end
       if @id_provider.ca_cert.present?
         File.open(File.join(SHIBBOLETH_CERT_DIR, 'idp.cer'), 'a') do |file|
-          file.write @id_provider.ca_cert
+          file.write @id_provider.ca_cert_with_header
         end
       end
       Dir.chdir(SHIBBOLETH_CERT_DIR) do

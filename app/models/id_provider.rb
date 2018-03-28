@@ -1,5 +1,5 @@
 class IdProvider < ApplicationRecord
-  before_save :set_host_name, :set_scope
+  before_save :set_host_name, :set_scope, :remove_key_header, :remove_cert_header, :remove_cert_header
   validates :entity_id, presence: true, uniqueness: true
 
   def set_host_name
@@ -19,7 +19,38 @@ class IdProvider < ApplicationRecord
   rescue
     nil
   end
+  
+  def remove_key_header
+    self.key = key.sub('-----BEGIN RSA PRIVATE KEY-----', '').sub('-----END RSA PRIVATE KEY-----', '').strip rescue nil
+  end
 
+  def remove_cert_header
+    self.cert = cert.sub('-----BEGIN CERTIFICATE-----', '').sub('-----END CERTIFICATE-----', '').strip rescue nil
+  end
+
+  def remove_ca_cert_header
+    self.ca_cert = ca_cert.sub('-----BEGIN CERTIFICATE-----', '').sub('-----END CERTIFICATE-----', '').strip rescue nil
+  end
+
+  def key_with_header
+    if key
+      ["-----BEGIN RSA PRIVATE KEY-----", key, "-----END RSA PRIVATE KEY-----\n"].join("\n")
+    end
+  end
+
+  def cert_with_header
+    if cert
+      ["-----BEGIN CERTIFICATE-----",  cert, "-----END CERTIFICATE-----\n"].join("\n")
+    end
+  end
+
+  def ca_cert_with_header
+    if ca_cert
+      ["-----BEGIN CERTIFICATE-----", ca_cert, "-----END CERTIFICATE-----\n"].join("\n")
+    end
+  end
+
+  ## IdP Setting files
   def attribute_resolver
     @idp_attributes = IdpAttribute.where(enable: true).order(:order)
     render('id_providers/attribute_resolver')
