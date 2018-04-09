@@ -38,6 +38,29 @@ userPassword:
   name: userPassword
   field_type_id: 2
   enable: true
+
+
+eduPersonEntitlement:
+  id: 5
+  order: 5
+  name: eduPersonEntitlement
+  field_type_id: 1
+  enable: true
+
+o:
+  id: 6
+  order: 6
+  name: o
+  field_type_id: 0
+  enable: true
+
+ou:
+  id: 7
+  order: 7
+  name: ou
+  field_type_id: 0
+  enable: true
+
 EOY
 
 ldap_attributes = YAML.load(ldap_attribute_yml)
@@ -57,6 +80,7 @@ eppn:
         <resolver:AttributeEncoder xsi:type="enc:SAML1ScopedString" name="urn:mace:dir:attribute-def:eduPersonPrincipalName" encodeType="false" />
         <resolver:AttributeEncoder xsi:type="enc:SAML2ScopedString" name="urn:oid:1.3.6.1.4.1.5923.1.1.1.6" friendlyName="eduPersonPrincipalName" encodeType="false" />
     </resolver:AttributeDefinition>
+  enable: true
 
 targetedId:
   id: 2
@@ -69,6 +93,7 @@ targetedId:
                             salt="%{idp.persistentId.salt}">
         <resolver:Dependency ref="%{idp.persistentId.sourceAttribute}" />
     </resolver:DataConnector>
+  enable: false
 
 displayName:
   id: 3
@@ -79,6 +104,7 @@ displayName:
         <resolver:Dependency ref="myLDAP" />
         <resolver:AttributeEncoder xsi:type="enc:SAML2String" name="urn:oid:1.3.6.1.4.1.32264.1.1.3" friendlyName="jaDisplayName" encodeType="false" />
     </resolver:AttributeDefinition>
+  enable: true
 
 mail:
   id: 4
@@ -90,6 +116,44 @@ mail:
         <resolver:AttributeEncoder xsi:type="enc:SAML1String" name="urn:mace:dir:attribute-def:mail" encodeType="false" />
         <resolver:AttributeEncoder xsi:type="enc:SAML2String" name="urn:oid:0.9.2342.19200300.100.1.3" friendlyName="mail" encodeType="false" />
     </resolver:AttributeDefinition>
+  enable: true
+
+eduPersonEntitlement:
+  id: 5
+  order: 5
+  name: eduPersonEntitlement
+  attribute_resolver: |+
+    <resolver:AttributeDefinition xsi:type="ad:Simple" id="eduPersonEntitlement" sourceAttributeID="eduPersonEntitlement">
+        <resolver:Dependency ref="myLDAP" />
+        <resolver:AttributeEncoder xsi:type="enc:SAML1String" name="urn:mace:dir:attribute-def:eduPersonEntitlement" encodeType="false" />
+        <resolver:AttributeEncoder xsi:type="enc:SAML2String" name="urn:oid:1.3.6.1.4.1.5923.1.1.1.7" friendlyName="eduPersonEntitlement" encodeType="false" />
+    </resolver:AttributeDefinition>
+  enable: true
+
+organizationName:
+  id: 6
+  order: 6
+  name: organizationName
+  attribute_resolver: |+
+    <resolver:AttributeDefinition xsi:type="ad:Simple" id="organizationName" sourceAttributeID="o">
+        <resolver:Dependency ref="myLDAP" />
+        <resolver:AttributeEncoder xsi:type="enc:SAML1String" name="urn:mace:dir:attribute-def:o" encodeType="false" />
+        <resolver:AttributeEncoder xsi:type="enc:SAML2String" name="urn:oid:2.5.4.10" friendlyName="o" encodeType="false" />
+    </resolver:AttributeDefinition>
+  enable: true
+    
+organizationalUnitName:
+  id: 7
+  order: 7
+  name: organizationalUnitName
+  attribute_resolver: |+
+    <resolver:AttributeDefinition xsi:type="ad:Simple" id="organizationalUnitName" sourceAttributeID="ou">
+        <resolver:Dependency ref="myLDAP" />
+        <resolver:AttributeEncoder xsi:type="enc:SAML1String" name="urn:mace:dir:attribute-def:ou" encodeType="false" />
+        <resolver:AttributeEncoder xsi:type="enc:SAML2String" name="urn:oid:2.5.4.11" friendlyName="ou" encodeType="false" />
+    </resolver:AttributeDefinition>
+  enable: true
+    
 YOM
 
 idp_attributes = YAML.load(idp_attribute_yml)

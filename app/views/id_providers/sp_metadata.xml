@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<% @service_providers.each do |service_provider| -%>
-<%= raw service_provider.metadata %>
-<% end %>

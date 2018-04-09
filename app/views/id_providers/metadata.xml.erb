@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<EntityDescriptor entityID="<%= @id_provider.entity_id %>">
+<EntitiesDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="GakuNin" validUntil="2018-04-20T14:00:00Z">
+<EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" entityID="<%= @id_provider.entity_id %>">
     <IDPSSODescriptor protocolSupportEnumeration="urn:mace:shibboleth:1.0 urn:oasis:names:tc:SAML:2.0:protocol">
         <Extensions>
             <shibmd:Scope regexp="false"><%= @id_provider.scope %></shibmd:Scope>
@@ -25,5 +26,24 @@
 
     </IDPSSODescriptor>
 
-<%#= @id_provider.extra %>
+  <AttributeAuthorityDescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol">
+    <Extensions>
+      <shibmd:Scope xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" regexp="false"><%= @id_provider.scope %></shibmd:Scope>
+    </Extensions>
+    <KeyDescriptor>
+      <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ds:X509Data>
+          <ds:X509Certificate>
+<%= @id_provider.cert %>
+          </ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+    </KeyDescriptor>
+    <AttributeService Location="https://<%= @id_provider.host_name %>:8443/idp/profile/SAML1/SOAP/AttributeQuery" Binding="urn:oasis:names:tc:SAML:1.0:bindings:SOAP-binding"/>
+    <AttributeService Location="https://<%= @id_provider.host_name %>:8443/idp/profile/SAML2/SOAP/AttributeQuery" Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP"/>
+    <NameIDFormat>urn:mace:shibboleth:1.0:nameIdentifier</NameIDFormat>
+    <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
+  </AttributeAuthorityDescriptor>
+
 </EntityDescriptor>
+</EntitiesDescriptor>

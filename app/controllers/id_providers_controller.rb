@@ -55,7 +55,7 @@ class IdProvidersController < ApplicationController
     File.open(File.join(SHIBBOLETH_METADATA_DIR, 'idp-metadata.xml'), 'w') do |file|
       file.write @id_provider.metadata
     end if params[:shibboleth_settings][:idp_metadata]
-    File.open(File.join(SHIBBOLETH_METADATA_DIR, 'idp-metadata.xml'), 'w') do |file|
+    File.open(File.join(SHIBBOLETH_METADATA_DIR, 'sp-metadata.xml'), 'w') do |file|
       file.write @id_provider.sp_metadata
     end if params[:shibboleth_settings][:sp_metadata]
 

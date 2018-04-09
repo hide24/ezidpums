@@ -21,32 +21,32 @@ class IdProvider < ApplicationRecord
   end
   
   def remove_key_header
-    self.key = key.sub('-----BEGIN RSA PRIVATE KEY-----', '').sub('-----END RSA PRIVATE KEY-----', '').strip rescue nil
+    self.key = key.sub('-----BEGIN RSA PRIVATE KEY-----', '').sub('-----END RSA PRIVATE KEY-----', '').gsub(/\r/, '').strip rescue nil
   end
 
   def remove_cert_header
-    self.cert = cert.sub('-----BEGIN CERTIFICATE-----', '').sub('-----END CERTIFICATE-----', '').strip rescue nil
+    self.cert = cert.sub('-----BEGIN CERTIFICATE-----', '').sub('-----END CERTIFICATE-----', '').gsub(/\r/, '').strip rescue nil
   end
 
   def remove_ca_cert_header
-    self.ca_cert = ca_cert.sub('-----BEGIN CERTIFICATE-----', '').sub('-----END CERTIFICATE-----', '').strip rescue nil
+    self.ca_cert = ca_cert.sub('-----BEGIN CERTIFICATE-----', '').sub('-----END CERTIFICATE-----', '').gsub(/\r/, '').strip rescue nil
   end
 
   def key_with_header
     if key
-      ["-----BEGIN RSA PRIVATE KEY-----", key, "-----END RSA PRIVATE KEY-----\n"].join("\n")
+      ["-----BEGIN RSA PRIVATE KEY-----", key.gsub(/\r/, ''), "-----END RSA PRIVATE KEY-----\n"].join("\n")
     end
   end
 
   def cert_with_header
     if cert
-      ["-----BEGIN CERTIFICATE-----",  cert, "-----END CERTIFICATE-----\n"].join("\n")
+      ["-----BEGIN CERTIFICATE-----",  cert.gsub(/\r/, ''), "-----END CERTIFICATE-----\n"].join("\n")
     end
   end
 
   def ca_cert_with_header
     if ca_cert
-      ["-----BEGIN CERTIFICATE-----", ca_cert, "-----END CERTIFICATE-----\n"].join("\n")
+      ["-----BEGIN CERTIFICATE-----", ca_cert.gsub(/\r/, ''), "-----END CERTIFICATE-----\n"].join("\n")
     end
   end
 
@@ -93,6 +93,7 @@ class IdProvider < ApplicationRecord
 
   def idp_properties
     @id_provider = self
+    @keystore_password = JETTY_KEYSTORE_PASSWORD
     render('id_providers/idp_properties')
   end
 
