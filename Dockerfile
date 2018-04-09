@@ -56,7 +56,8 @@ RUN \
 
 RUN rm -f /etc/service/nginx/down
 RUN rm /etc/nginx/sites-enabled/default
-COPY --chown=app:app . $APP_ROOT
+COPY . $APP_ROOT
+RUN chown -R app.app $APP_ROOT
 RUN sed -e "s/__secret_key_base__/`bundle exec rails secret`/" $APP_ROOT/nginx_webapp.conf > /etc/nginx/sites-enabled/webapp.conf && \
     sed -i -e "s/__ldap_base_dn__/$LDAP_BASE_DN/" /etc/nginx/sites-enabled/webapp.conf && \
     sed -i -e "s/__ldap_bind_dn__/$LDAP_BIND_DN/" /etc/nginx/sites-enabled/webapp.conf && \
