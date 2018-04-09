@@ -1,5 +1,5 @@
 class IdProvider < ApplicationRecord
-  before_save :set_host_name, :set_scope, :remove_key_header, :remove_cert_header, :remove_cert_header
+  before_save :set_host_name, :set_scope, :remove_key_header, :remove_cert_header, :remove_ca_cert_header
   validates :entity_id, presence: true, uniqueness: true
 
   def set_host_name
