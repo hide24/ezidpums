@@ -78,6 +78,10 @@
           <strong><label for="shibboleth_settings_saml_nameid_properties" >saml-nameid.properties</label></strong>
         </div>
         <div class="checkbox field">
+          <%= check_box_tag 'shibboleth_settings[metadata_providers]', true, true %>
+          <strong><label for="shibboleth_settings_metadata_providers" >metadata-providers.xml</label></strong>
+        </div>
+        <div class="checkbox field">
           <%= check_box_tag 'shibboleth_settings[idp_metadata]', true, true %>
           <strong><label for="shibboleth_settings_idp_metadata" >idp-metadata.xml</label></strong>
         </div>
