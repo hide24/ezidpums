@@ -74,6 +74,8 @@ class AccountsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
       attribute_names = LdapAttribute.attribute_names.map{|n| n.underscore.to_sym}
-      params.require(:account).permit(*attribute_names)
+      account = params.require(:account).permit(*attribute_names)
+      account.delete(:user_password) if account[:user_password].blank?
+      account
     end
 end
