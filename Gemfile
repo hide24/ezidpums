@@ -37,7 +37,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use ActiveLdap
 gem 'net-ldap', require:  'net/ldap'
-gem 'activeldap', require: 'active_ldap/railtie', git: 'https://github.com/hide24/activeldap'
+gem 'activeldap', require: 'active_ldap/railtie', git: 'https://github.com/hide24/activeldap', tag: 'r1.2.2.h'
 
 # Use jQuery & Bootstarp4
 gem 'bootstrap', '~> 4.0.0'
