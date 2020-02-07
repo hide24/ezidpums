@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :idp_attribute_assigns
   resources :idp_attributes
   resources :service_providers
-  resources :accounts
+  resources :accounts, constraints: {id: /[^\/]+/}
 
   match 'ldap(/:action(/:id(.format)))', controller: 'ldap', via: [:get, :post]
   match 'id_p/update_settings', controller: 'id_providers', action: 'update_settings', via: [:get, :post]

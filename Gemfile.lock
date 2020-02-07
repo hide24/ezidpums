@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/hide24/activeldap
   revision: 577c6dcf83beb5154871b3d4e02567ea51f2d18b
+  tag: r1.2.2.h
   specs:
     activeldap (5.1.2)
       activemodel (> 4.0.0)
