@@ -43,7 +43,9 @@ class AccountsController < ApplicationController
   # PATCH/PUT /accounts/1.json
   def update
     respond_to do |format|
-      if @account.update_attributes(account_params)
+      if @account.update_attributes(account_params.tap{|account|
+          account[:user_password] = @account.user_password if account[:user_password].blank?
+        })
         format.html { redirect_to @account, notice: 'Account was successfully updated.' }
         format.json { render :show, status: :ok, location: @account }
         format.js { @status = 'success'}
@@ -75,7 +77,6 @@ class AccountsController < ApplicationController
     def account_params
       attribute_names = LdapAttribute.attribute_names.map{|n| n.underscore.to_sym}
       account = params.require(:account).permit(*attribute_names)
-      account.delete(:user_password) if account[:user_password].blank?
       account
     end
 end
