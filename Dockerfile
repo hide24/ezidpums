@@ -1,4 +1,4 @@
-FROM phusion/passenger-ruby25:0.9.29
+FROM phusion/passenger-ruby31
 
 MAINTAINER Hidetoshi Yoshimoto hidetoshi.yoshimoto@gmail.com
 
