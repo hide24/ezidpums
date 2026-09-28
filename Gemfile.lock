@@ -83,8 +83,7 @@ GEM
     crass (1.0.7)
     date (3.5.1)
     erubi (1.13.1)
-    execjs (2.10.2)
-      json (>= 2)
+    execjs (2.7.0)
     fast_gettext (2.4.0)
       prime
     ffi (1.17.4)
@@ -111,7 +110,6 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (8.0.1)
       railties (>= 3.2.16)
-    json (3.0.2)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
